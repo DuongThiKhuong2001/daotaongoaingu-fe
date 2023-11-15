@@ -1,4 +1,20 @@
 <div class="table-box mat-elevation-z4">
+  <table id="season-tble" class=""hidden>
+    <tr></tr>
+    <tr>
+      <th>STT</th>
+      <th>Họ Tên</th>
+      <th>Tài khoản</th>
+      <th>Số điện thoại</th>
+
+    </tr>
+    <tr *ngFor="let data of dataExel; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ data.hoTen }}</td>
+      <td>{{ data.tenDangNhap }}</td>
+      <td>{{ data.soDienThoai }}</td>
+    </tr>
+  </table>
   <mat-form-field appearance="outline" class="search">
     <mat-label>Tìm kiếm</mat-label>
     <input
@@ -11,6 +27,7 @@
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field>
   <mat-icon (click)="return()" class="back-icon">arrow_back</mat-icon>
+  <mat-icon  (click)="exportToExcel()" class="back-icon" >file_download</mat-icon>
   <mat-table [dataSource]="danhSachGiaoVien" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="STT">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>

@@ -301,10 +301,10 @@ const routes: Routes = [
 
       {
         path: 'danh-sach-lich-gac-thi/:maKyThi/danh-sach-lich-gac-thi/:maLichThi/danh-sach-hoc-vien/:trangThai',
-        component: DanhSachHocVienComponent,
+        component: DsHocVienComponent,
         data: {
-          titulo: 'Quản lý lớp học',
-          breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
+          titulo: 'Danh sách học viên',
+          breadcrumbs: [{ label: 'Danh sách học viên ', url: '/' }],
         },
       },
       {

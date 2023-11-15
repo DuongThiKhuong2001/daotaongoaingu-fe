@@ -1,0 +1,14 @@
+<form (ngSubmit)="saveDocument()" enctype="multipart/form-data">
+  <h1 mat-dialog-title>Nhập điểm thi</h1>
+  <div mat-dialog-content>
+    <div class="file">
+      <label>Chọn file điểm</label>
+      <input type="file" (change)="onFileSelect($event)" required />
+    </div>
+    
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Lưu</button>
+    <button (click)="closePopup($event)" mat-raised-button color="warn">Đóng</button>
+  </div>
+</form>

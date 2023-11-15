@@ -38,4 +38,10 @@ export class KetQuaThiService {
       }
     });
   }
+  importExcel(file: any, maLichThi:any): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('maLichThi', maLichThi.toString());
+    return this.http.post(`${this.baseUrl}/import`, formData);
+  }
 }

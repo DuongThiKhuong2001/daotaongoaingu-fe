@@ -10,7 +10,9 @@ import { LopHoc } from 'src/app/models/LopHoc';
 import { DangKyThiService } from 'src/app/services/dang-ky-thi.service';
 import { KetQuaThiService } from 'src/app/services/ket-qua-thi.service';
 import { StorageService } from 'src/app/services/storage.service';
-
+import { LichThiService } from 'src/app/services/lich-thi.service';
+import * as XLSX from 'xlsx';
+import * as XLSXStyle from 'xlsx-js-style';
 @Component({
   selector: 'app-ds-hoc-vien',
   templateUrl: './ds-hoc-vien.component.html',
@@ -31,7 +33,9 @@ export class DsHocVienComponent implements OnInit {
   maKyThi!: number;
   dangKy!: DangKyKH;
   lopHoc!: LopHoc;
-
+  nameFile = 'Danh sách học viên ';
+  dataExel: any;
+  lichThiInfo: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -39,7 +43,7 @@ export class DsHocVienComponent implements OnInit {
     private storageService: StorageService,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private ketQuaThiService: KetQuaThiService,
+    private lichThiService: LichThiService,
     private activateRoute: ActivatedRoute,
     private router: Router
   ) {}
@@ -52,9 +56,65 @@ export class DsHocVienComponent implements OnInit {
       this.trangThai = +params['trangThai'];
       this.maKyThi = +params['maKyThi'];
       this.loadDanhSachHocVienCuaLichThi();
+      this.loadThongTinLichThi(this.maLichThi)
+      this.loadDsHocVienDiemDanh(this.maLichThi)
     });
   }
+ //lấy thông tin lớp học
+ loadThongTinLichThi(ma:any) {
+  this.lichThiService.layLichThi(ma).subscribe({
+    next: data => {
+      console.log(data)
+      this.lichThiInfo = data
+      let ngayThi = this.lichThiInfo.ngayThi.split('T')[0];
 
+       this.nameFile = `Danh sách học viên của lịch thi ngày ${ngayThi} của kỳ thi ${this.lichThiInfo.kyThi.chungChi.tenChungChi}`;
+    }
+    ,
+    error: err => {
+      console.log(err)
+    }
+  })
+}
+//lấy danh sách xuất excel
+loadDsHocVienDiemDanh(ma: any) {
+  this.lichThiService.layHocViensByMaLichThi(ma).subscribe({
+    next: (data) => {
+      this.dataExel = data
+      console.log(data);
+    },
+    error: (err) => {},
+  });
+}
+//xuất excel
+exportToExcel(): void {
+  const element = document.getElementById('season-tble');
+  const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+  //gộp ô
+  worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+  //custom style
+  worksheet['A1'] = {
+    t: 's',
+    v: this.nameFile,
+    s: { alignment: { horizontal: 'center' }, font: { bold: true } },
+  };
+
+  for (let col = 0; col <= 3; col++) {
+    const cell = XLSX.utils.encode_cell({ r: 1, c: col });
+    worksheet[cell].s = { font: { bold: true } };
+  }
+  const columnWidths = [
+    { wch: 5 }, // A
+    { wch: 25 }, // B
+    { wch: 25 }, // C
+    { wch: 25 }, // C
+  ];
+  worksheet['!cols'] = columnWidths;
+
+  const book: XLSXStyle.WorkBook = XLSXStyle.utils.book_new();
+  XLSXStyle.utils.book_append_sheet(book, worksheet, 'Sheet1');
+  XLSXStyle.writeFile(book, `${this.nameFile}.xlsx`);
+}
   loadDanhSachHocVienCuaLichThi() {
     this.dangKyThiService.dsHocVienLichThi(this.maLichThi).subscribe({
       next: (data) => {

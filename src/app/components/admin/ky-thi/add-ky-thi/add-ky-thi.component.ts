@@ -12,7 +12,7 @@ import { switchMap, tap } from 'rxjs';
 @Component({
   selector: 'app-add-ky-thi',
   templateUrl: './add-ky-thi.component.html',
-  styleUrls: ['./add-ky-thi.component.css']
+  styleUrls: ['./add-ky-thi.component.css'],
 })
 export class AddKyThiComponent implements OnInit {
   availableChungChi: any[] = [];
@@ -21,7 +21,7 @@ export class AddKyThiComponent implements OnInit {
   months: number[] = [];
   currentKyThi: any | null = null;
   isEdit = false;
-  lichThis:LichThi[]=[];
+  lichThis: LichThi[] = [];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<AddKyThiComponent>,
@@ -29,7 +29,7 @@ export class AddKyThiComponent implements OnInit {
     private toastr: ToastrService,
     private kyThiService: KyThiService,
     private chungChiService: ChungChiService,
-    private lichThiService:LichThiService
+    private lichThiService: LichThiService
   ) {
     if (data && data.currentKyThi) {
       this.currentKyThi = data.currentKyThi;
@@ -53,32 +53,46 @@ export class AddKyThiComponent implements OnInit {
     });
   }
 
-  loadLichThiCuaKyThi(){
-    this.lichThiService.layLichThiKyThi(this.currentKyThi.maKyThi).pipe(
-      tap((lichThis) => {
-        this.lichThis = lichThis;
-        const selectedNgayThi = this.lichThis.map(lichThi => new Date(lichThi.ngayThi));
-        this.myform.patchValue({
-          thangThi: this.currentKyThi.thangThi,
-          namThi: this.currentKyThi.namThi,
-          soLuongDuocDangKy:this.currentKyThi.soLuongDuocDangKy,
-          maChungChi: this.currentKyThi.chungChi.maChungChi,
-          danhSachNgayThi: selectedNgayThi as any,
-        });
-      }),
-      switchMap(() => this.kyThiService.getDaysOfMonth(this.currentKyThi.namThi, this.currentKyThi.thangThi))
-    ).subscribe((data) => {
-      this.availableNgayThi = data;
-    });
+  loadLichThiCuaKyThi() {
+    this.lichThiService
+      .layLichThiKyThi(this.currentKyThi.maKyThi)
+      .pipe(
+        tap((lichThis) => {
+          this.lichThis = lichThis;
+          const selectedNgayThi = this.lichThis.map(
+            (lichThi) => new Date(lichThi.ngayThi)
+          );
+          this.myform.patchValue({
+            thangThi: this.currentKyThi.thangThi,
+            namThi: this.currentKyThi.namThi,
+            soLuongDuocDangKy: this.currentKyThi.soLuongDuocDangKy,
+            maChungChi: this.currentKyThi.chungChi.maChungChi,
+
+          });
+        }),
+        switchMap(() =>
+          this.kyThiService.getDaysOfMonth(
+            this.currentKyThi.namThi,
+            this.currentKyThi.thangThi
+          )
+        )
+      )
+      .subscribe((data) => {
+        this.availableNgayThi = data;
+      });
   }
 
   ngOnInit(): void {
     if (this.currentKyThi) {
       this.isEdit = true;
-     this.loadLichThiCuaKyThi()
+      this.loadLichThiCuaKyThi();
     }
     this.loadChungChi();
-    for (let year = new Date().getFullYear(); year <= new Date().getFullYear() + 1; year++) {
+    for (
+      let year = new Date().getFullYear();
+      year <= new Date().getFullYear() + 1;
+      year++
+    ) {
       this.years.push(year);
     }
 
@@ -86,8 +100,12 @@ export class AddKyThiComponent implements OnInit {
       this.months.push(month);
     }
     // Thêm lắng nghe sự kiện thay đổi
-    this.myform.get('thangThi')?.valueChanges.subscribe(() => this.onThangNamThiChanged());
-    this.myform.get('namThi')?.valueChanges.subscribe(() => this.onThangNamThiChanged());
+    this.myform
+      .get('thangThi')
+      ?.valueChanges.subscribe(() => this.onThangNamThiChanged());
+    this.myform
+      .get('namThi')
+      ?.valueChanges.subscribe(() => this.onThangNamThiChanged());
   }
 
   loadChungChi() {
@@ -96,43 +114,45 @@ export class AddKyThiComponent implements OnInit {
     });
   }
 
-
-  closePopup() {
-    this.dialogRef.close('Closed using function');
+  closePopup(event: Event): void {
+    event.preventDefault(); // Ngăn chặn hành vi mặc định của nút submit
+    this.dialogRef.close('Closed');
   }
 
   myform = this.formBuilder.group({
-    thangThi: ['', [Validators.required, Validators.min(1), Validators.max(12)]],
+    thangThi: [
+      '',
+      [Validators.required, Validators.min(1), Validators.max(12)],
+    ],
     namThi: ['', [Validators.required, Validators.min(1)]],
-    soLuongDuocDangKy:['', [Validators.required, Validators.min(1)]],
+    soLuongDuocDangKy: ['', [Validators.required, Validators.min(1)]],
     maChungChi: ['', [Validators.required]],
-    danhSachNgayThi: [],
+    danhSachNgayThi: ['',[Validators.required]],
   });
 
   saveKyThi() {
     if (this.myform.valid) {
       const formData = this.myform.value;
       if (this.isEdit) {
-        // Trong chế độ chỉnh sửa, gọi phương thức sửa kỳ thi
-        this.kyThiService.suaKyThi(this.currentKyThi?.maKyThi, formData).subscribe({
-          next: (data) => {
-            if (data.message && data.message === 'exist') {
-              this.toastr.warning('Kỳ thi đã tồn tại trong tháng này!');
-            } else {
-              this.toastr.success('Chỉnh sửa kỳ thi thành công!');
-              this.dialogRef.close('edited');
-
-            }
-          },
-          error: (err) => {
-             if (err.status === 400) {
-               // Handle the case where the deletion is not allowed
-               this.toastr.warning('Không thể chỉnh sửa kỳ thi này. ');
-
-             }
-            console.log(err);
-          },
-        });
+        this.kyThiService
+          .suaKyThi(this.currentKyThi?.maKyThi, formData)
+          .subscribe({
+            next: (data) => {
+              if (data.message && data.message === 'exist') {
+                this.toastr.warning('Kỳ thi đã tồn tại trong tháng này!');
+              } else {
+                this.toastr.success('Chỉnh sửa kỳ thi thành công!');
+                this.dialogRef.close('edited');
+              }
+            },
+            error: (err) => {
+              if (err.status === 400) {
+                // Handle the case where the deletion is not allowed
+                this.toastr.warning('Không thể chỉnh sửa kỳ thi này. ');
+              }
+              console.log(err);
+            },
+          });
       } else {
         // Trong chế độ thêm mới, gọi phương thức thêm kỳ thi
         this.kyThiService.themKyThi(formData).subscribe({
@@ -143,7 +163,6 @@ export class AddKyThiComponent implements OnInit {
             } else {
               this.toastr.success('Thêm kỳ thi thành công!');
               this.dialogRef.close('success');
-
             }
           },
           error: (err) => {
@@ -153,6 +172,4 @@ export class AddKyThiComponent implements OnInit {
       }
     }
   }
-
-
 }

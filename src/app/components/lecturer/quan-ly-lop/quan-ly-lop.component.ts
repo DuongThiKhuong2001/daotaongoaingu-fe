@@ -11,6 +11,7 @@ import { LopHocService } from 'src/app/services/lop-hoc.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { DetailLopComponent } from './detail-lop/detail-lop.component';
 import { GuiThongBaoComponent } from './gui-thong-bao/gui-thong-bao.component';
+import { DiemDanhComponent } from '../../admin/diem-danh/diem-danh.component';
 
 @Component({
   selector: 'app-quan-ly-lop',
@@ -33,6 +34,7 @@ export class QuanLyLopComponent implements OnInit {
   checkEmtyList: boolean = true;
   data!: any;
   username: string = '';
+  selectedFile: File | null = null;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -110,4 +112,50 @@ export class QuanLyLopComponent implements OnInit {
       });
     }
   }
+
+
+  taiLen(ma: any){
+    var popup = this.dialog.open(DiemDanhComponent, {
+      data: {
+        maLop: ma,
+        maLichThi:-1
+      },
+      width: '40%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+    });
+  }
+  
+  taiXuong(ma:any){
+    this.lopHocService.downloadFile(ma).subscribe({
+      next: (response) => {
+        const blob = new Blob([response.body as Blob], {
+          type: 'application/octet-stream',
+        });
+        // Extract filename from the Content-Disposition header
+        const contentDisposition = response.headers.get('content-disposition');
+        let filename = 'default-filename.ext'; // default filename if not provided
+        if (contentDisposition) {
+          const matches = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(
+            contentDisposition
+          );
+          if (matches != null && matches[1]) {
+            filename = matches[1].replace(/['"]/g, '');
+          }
+        }
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      },
+      error: (err) => {
+        this.toastr.error('Tải thất bại','Chưa có file điểm danh hoặc đã có lỗi trong quá trình tải');
+      },
+    });
+  }
+
 }

@@ -18,7 +18,7 @@
   >
     Thêm mới <mat-icon>add_circle </mat-icon>
   </button> -->
-   
+
   <div *ngIf="!checkEmtyList">
   <mat-table [dataSource]="danhSachLichThi" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">
@@ -52,6 +52,12 @@
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let item">
         <mat-icon matTooltip="Danh sách học viên"(click)="dsHv(item)">people </mat-icon>
+        <mat-icon matTooltip="Cập nhật file điểm danh" (click)="taiLen(item.maLichThi)"
+        >system_update
+      </mat-icon>
+      <mat-icon matTooltip="Tải file điểm danh" (click)="taiXuong(item.maLichThi)"
+      >save_alt
+    </mat-icon>
       </mat-cell>
     </ng-container>
 

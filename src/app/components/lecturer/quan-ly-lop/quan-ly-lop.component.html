@@ -51,6 +51,12 @@
           <mat-icon matTooltip="Xem chi tiết" (click)="detailClass(LopHoc)"
             >infor
           </mat-icon>
+          <mat-icon matTooltip="Xem chi tiết" (click)="taiLen(LopHoc.maLop)"
+            >system_update
+          </mat-icon>
+          <mat-icon matTooltip="Xem chi tiết" (click)="taiXuong(LopHoc.maLop)"
+          >save_alt
+        </mat-icon>
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

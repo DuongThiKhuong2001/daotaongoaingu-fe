@@ -140,4 +140,19 @@ export class LopHocService {
   getHocViensDiemDanhhByLopHoc(maLop: number): Observable<any> {
     return this.http.get(`${this.apiBaseUrl}/lop-hoc/${maLop}/hoc-vien-diem-danh`);
   }
+
+  downloadFile(maLop: number): Observable<any> {
+    return this.http.get(`${this.apiBaseUrl}/lop-hoc/${maLop}/download`, { responseType: 'blob', observe: 'response' });
+  }
+
+  // Phương thức để lấy tên tài liệu
+  getFileName(maLop: number): Observable<any> {
+    return this.http.get(`${this.apiBaseUrl}/lop-hoc/${maLop}/ten-file`, {responseType: 'text'});
+  }
+  suaFileDiemDanh(maLop: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.put(`${this.apiBaseUrl}/lop-hoc/sua-file/${maLop}`, formData);
+  }
 }

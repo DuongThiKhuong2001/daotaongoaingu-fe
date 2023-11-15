@@ -61,6 +61,6 @@
       {{ isEdit ? 'Chỉnh sửa' : 'Lưu' }}
     </button>
 
-    <button (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
+    <button (click)="closePopup($event)" mat-raised-button color="warn">Đóng</button>
   </div>
 </form>

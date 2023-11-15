@@ -145,6 +145,9 @@ import { ThongBaoComponent } from './components/thong-bao/thong-bao.component';
 import { DetailThongBaoComponent } from './components/thong-bao/detail-thong-bao/detail-thong-bao.component';
 import { DsHocVienComponent } from './components/admin/ky-thi/ds-hoc-vien/ds-hoc-vien.component';
 import { GuiThongBaoComponent } from './components/lecturer/quan-ly-lop/gui-thong-bao/gui-thong-bao.component';
+import { DiemDanhComponent } from './components/admin/diem-danh/diem-danh.component';
+import { NhapDiemComponent } from './components/admin/nhap-diem/nhap-diem.component';
+
 
 
 @NgModule({
@@ -286,8 +289,9 @@ import { GuiThongBaoComponent } from './components/lecturer/quan-ly-lop/gui-thon
     ThongBaoComponent,
     DetailThongBaoComponent,
     DsHocVienComponent,
-    GuiThongBaoComponent
-
+    GuiThongBaoComponent,
+    DiemDanhComponent,
+    NhapDiemComponent
 
   ],
   imports: [
