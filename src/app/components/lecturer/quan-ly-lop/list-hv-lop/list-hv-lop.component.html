@@ -1,27 +1,20 @@
 <div class="table-box mat-elevation-z4">
-  <table id="season-tble" class=""hidden>
+  <table id="season-tble" class="" hidden>
     <tr></tr>
     <tr>
       <th>STT</th>
       <th>Họ Tên</th>
       <th>Tài khoản</th>
-      <th>Mã đăng ký</th>
-      <th>Điểm nghe</th>
-      <th>Điểm đọc</th>
-      <th>Điểm viết</th>
-      <th>Điểm nói</th>
+      <th>Số điện thoại</th>
     </tr>
     <tr *ngFor="let data of dataExel; let i = index">
       <td>{{ i + 1 }}</td>
       <td>{{ data.hoTen }}</td>
       <td>{{ data.tenDangNhap }}</td>
-      <td>{{ data.maDangKy }}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ data.soDienThoai }}</td>
     </tr>
   </table>
+
   <mat-form-field appearance="outline" class="search">
     <mat-label>Tìm kiếm</mat-label>
     <input
@@ -35,23 +28,15 @@
   </mat-form-field>
   <button
     class="excel"
-    (click)="importExcel()"
-    mat-raised-button
-    color="green"
-  >
-    <mat-icon class="excel">file_upload</mat-icon>
-    Nhập điểm
-  </button>
-   <button matTooltip="Ds nhập điểm"
-    class="excel"
     (click)="exportToExcel()"
     mat-raised-button
-    color="green"
   >
     <mat-icon class="excel">file_download</mat-icon>
-    Xuất ds excel
+    Xuất excel
   </button>
-  <mat-table [dataSource]="danhSachGiaoVien" matSort class="mat-elevation-z8">
+
+  <mat-icon (click)="return()" class="back-icon">arrow_back</mat-icon>
+  <mat-table [dataSource]="danhSachHocVien" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="STT">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
       <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
@@ -61,54 +46,32 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Họ tên</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">{{ item.taiKhoan?.hoTen }}</mat-cell>
+      <mat-cell *matCellDef="let hocVien">{{
+        hocVien.taiKhoan?.hoTen
+      }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="taiKhoan.gioiTinh">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Giới tính</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">
-        {{ item.taiKhoan?.gioiTinh }}
+      <mat-cell *matCellDef="let hocVien">
+        {{ hocVien.taiKhoan?.gioiTinh }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="taiKhoan.soDienThoai">
       <mat-header-cell *matHeaderCellDef mat-sort-header>SĐT</mat-header-cell>
-      <mat-cell *matCellDef="let item">
-        {{ item.taiKhoan?.soDienThoai }}
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef>Chỉnh sửa</mat-header-cell>
-      <mat-cell *matCellDef="let item">
-        <mat-icon
-          matTooltip="Chỉnh sửa điểm"
-          *ngIf="trangThai !== 1"
-          (click)="chinhSuaDiem(item)"
-          >edit
-        </mat-icon>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="xem">
-      <mat-header-cell *matHeaderCellDef>Xem điểm</mat-header-cell>
-      <mat-cell *matCellDef="let item">
-        <mat-icon
-          matTooltip="Xem điểm"
-          *ngIf="trangThai !== 1"
-          (click)="xemDiem(item)"
-          >remove_red_eye
-        </mat-icon>
+      <mat-cell *matCellDef="let hocVien">
+        {{ hocVien.taiKhoan?.soDienThoai }}
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let item">
-
-        <mat-icon matTooltip="Thông tin học viên" (click)="detail(item)"
+      <mat-cell *matCellDef="let hocVien">
+        <mat-icon matTooltip="Xem chi tiết" (click)="detail(hocVien)"
           >infor
         </mat-icon>
-
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

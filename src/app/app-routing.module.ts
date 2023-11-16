@@ -58,6 +58,8 @@ import { ListGiaoVienRaDeComponent } from './components/admin/ky-thi/list-giao-v
 import { QuanLiRaDeComponent } from './components/lecturer/quan-li-ra-de/quan-li-ra-de.component';
 import { ThongBaoComponent } from './components/thong-bao/thong-bao.component';
 import { DsHocVienComponent } from './components/admin/ky-thi/ds-hoc-vien/ds-hoc-vien.component';
+import { ListHvLopComponent } from './components/lecturer/quan-ly-lop/list-hv-lop/list-hv-lop.component';
+import { DsHvComponent } from './components/lecturer/danh-sach-lich-thi/ds-hv/ds-hv.component';
 
 
 const routes: Routes = [
@@ -284,7 +286,7 @@ const routes: Routes = [
 
       {
         path: 'quan-ly-lop-hoc/:maKhoaHoc/danh-sach-lop-hoc/:maLopHoc/danh-sach-hoc-vien',
-        component: ListHocVienComponent,
+        component: ListHvLopComponent,
         data: {
           titulo: 'Quản lý lớp học',
           breadcrumbs: [{ label: 'Quản lý lớp học ', url: '/' }],
@@ -301,7 +303,7 @@ const routes: Routes = [
 
       {
         path: 'danh-sach-lich-gac-thi/:maKyThi/danh-sach-lich-gac-thi/:maLichThi/danh-sach-hoc-vien/:trangThai',
-        component: DsHocVienComponent,
+        component: DsHvComponent,
         data: {
           titulo: 'Danh sách học viên',
           breadcrumbs: [{ label: 'Danh sách học viên ', url: '/' }],

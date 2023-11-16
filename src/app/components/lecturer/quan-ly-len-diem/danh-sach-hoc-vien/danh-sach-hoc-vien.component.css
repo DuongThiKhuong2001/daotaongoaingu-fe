@@ -93,3 +93,11 @@ mat-paginator {
   margin: 10px;
 
 }
+.excel {
+  float: right;
+  justify-content: flex-end;
+  margin-left: auto;
+  color: green;
+  margin: 10px;
+
+}

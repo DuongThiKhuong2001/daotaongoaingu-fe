@@ -147,6 +147,8 @@ import { DsHocVienComponent } from './components/admin/ky-thi/ds-hoc-vien/ds-hoc
 import { GuiThongBaoComponent } from './components/lecturer/quan-ly-lop/gui-thong-bao/gui-thong-bao.component';
 import { DiemDanhComponent } from './components/admin/diem-danh/diem-danh.component';
 import { NhapDiemComponent } from './components/admin/nhap-diem/nhap-diem.component';
+import { ListHvLopComponent } from './components/lecturer/quan-ly-lop/list-hv-lop/list-hv-lop.component';
+import { DsHvComponent } from './components/lecturer/danh-sach-lich-thi/ds-hv/ds-hv.component';
 
 
 
@@ -291,7 +293,9 @@ import { NhapDiemComponent } from './components/admin/nhap-diem/nhap-diem.compon
     DsHocVienComponent,
     GuiThongBaoComponent,
     DiemDanhComponent,
-    NhapDiemComponent
+    NhapDiemComponent,
+    ListHvLopComponent,
+    DsHvComponent
 
   ],
   imports: [

@@ -89,10 +89,6 @@ mat-paginator {
   margin-left: auto;
 }
 
-
-.hidden {
-  display: none !important;
-}
 .back-icon {
   float: right;
   justify-content: flex-end;
@@ -109,4 +105,8 @@ mat-paginator {
   color: green;
   margin: 10px;
 
+}
+
+.hidden {
+  display: none !important;
 }

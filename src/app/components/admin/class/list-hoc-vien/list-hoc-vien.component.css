@@ -87,14 +87,21 @@ mat-paginator {
   margin-left: auto;
 }
 .back-icon {
-
-  float: right;
   float: right;
   justify-content: flex-end;
-  /* Đặt nút bên phải */
   margin-left: auto;
   margin: 10px;
-  /* Điều chỉnh khoảng cách giữa icon và nút */
+  margin-top: 20px;
+
+}
+
+.excel {
+  float: right;
+  justify-content: flex-end;
+  margin-left: auto;
+  color: green;
+  margin: 10px;
+
 }
 .hidden {
   display: none !important;

@@ -18,7 +18,7 @@ import { DiemDanhComponent } from '../../admin/diem-danh/diem-danh.component';
 })
 export class DanhSachLichThiComponent implements OnInit {
   danhSachLichThi: MatTableDataSource<LichThi> = new MatTableDataSource();
-  displayedColumns: string[] = ['stt', 'ngayThi', 'caThi', 'phong', 'actions'];
+  displayedColumns: string[] = ['stt', 'ngayThi', 'caThi', 'phong', 'dshv','tailen','actions'];
   searchTerm: string = '';
   checkEmtyList: boolean = true;
   data!: any;

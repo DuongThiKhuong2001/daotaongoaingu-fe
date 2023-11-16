@@ -26,8 +26,9 @@ export class QuanLyLopComponent implements OnInit {
     'hinhThucHoc',
     'thongbao',
     'dshv',
+    'tailen',
+    'taixuong',
     'actions',
-
   ];
   length: number = 0;
   searchTerm: string = '';
@@ -113,20 +114,19 @@ export class QuanLyLopComponent implements OnInit {
     }
   }
 
-
-  taiLen(ma: any){
+  taiLen(ma: any) {
     var popup = this.dialog.open(DiemDanhComponent, {
       data: {
         maLop: ma,
-        maLichThi:-1
+        maLichThi: -1,
       },
       width: '40%',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
     });
   }
-  
-  taiXuong(ma:any){
+
+  taiXuong(ma: any) {
     this.lopHocService.downloadFile(ma).subscribe({
       next: (response) => {
         const blob = new Blob([response.body as Blob], {
@@ -153,9 +153,11 @@ export class QuanLyLopComponent implements OnInit {
         document.body.removeChild(a);
       },
       error: (err) => {
-        this.toastr.error('Tải thất bại','Chưa có file điểm danh hoặc đã có lỗi trong quá trình tải');
+        this.toastr.error(
+          'Tải thất bại',
+          'Chưa có file điểm danh hoặc đã có lỗi trong quá trình tải'
+        );
       },
     });
   }
-
 }

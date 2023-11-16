@@ -47,15 +47,29 @@
         {{ item.phong?.tenPhong }}
       </mat-cell>
     </ng-container>
+ <ng-container matColumnDef="dshv">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Ds học viên</mat-header-cell
+      >
+      <mat-cell *matCellDef="let item">
+       <mat-icon matTooltip="Danh sách học viên"(click)="dsHv(item)">people </mat-icon>
+      </mat-cell>
+    </ng-container>
 
+     <ng-container matColumnDef="tailen">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Điểm danh</mat-header-cell
+      >
+      <mat-cell *matCellDef="let item">
+        <mat-icon matTooltip="Cập nhật file " class="excel" (click)="taiLen(item.maLichThi)"
+        >cloud_upload
+      </mat-icon>
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let item">
-        <mat-icon matTooltip="Danh sách học viên"(click)="dsHv(item)">people </mat-icon>
-        <mat-icon matTooltip="Cập nhật file điểm danh" (click)="taiLen(item.maLichThi)"
-        >system_update
-      </mat-icon>
-      <mat-icon matTooltip="Tải file điểm danh" (click)="taiXuong(item.maLichThi)"
+      <mat-icon matTooltip="Tải file "  class="excel" (click)="taiXuong(item.maLichThi)"
       >save_alt
     </mat-icon>
       </mat-cell>

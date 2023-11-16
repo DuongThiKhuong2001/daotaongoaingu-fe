@@ -33,22 +33,6 @@ mat-icon {
   color: #064b8b;
 }
 
-/* Đổi màu của biểu tượng "delete" sang màu đỏ */
-mat-icon.delete {
-  color: red;
-}
-
-/* Đổi màu của biểu tượng "delete" sang màu đỏ khi hover */
-mat-icon.delete:hover {
-  color: red;
-}
-
-/* Hover effect cho biểu tượng tìm kiếm và làm mới */
-mat-icon:hover {
-  color: #12135c;
-}
-
-/* Định dạng tiêu đề bảng */
 mat-label {
   font-weight: bold;
   font-size: 16px;
@@ -138,4 +122,10 @@ mat-paginator {
 .offline-class {
   background-color: #f8d7da;
   /* màu đỏ nhạt cho lớp học offline */
+}
+.excel {
+  justify-content: flex-end;
+  margin-left: auto;
+  color: green;
+  margin: 10px;
 }

@@ -18,7 +18,7 @@ import { KyThi } from 'src/app/models/KyThi';
 })
 export class QuanLiRaDeComponent implements OnInit {
   danhSachKyThi: MatTableDataSource<KyThi> = new MatTableDataSource();
-  displayedColumns: string[] = ['stt', 'thangThi', 'namThi', 'actions'];
+  displayedColumns: string[] = ['stt', 'thangThi', 'namThi', ];
   searchTerm: string = '';
   checkEmtyList: boolean = true;
   username: string = '';

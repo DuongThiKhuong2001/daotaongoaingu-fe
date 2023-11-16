@@ -1,25 +1,26 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ToastrService } from 'ngx-toastr';
-import { StorageService } from 'src/app/services/storage.service';
-import { HocVien } from 'src/app/models/HocVien';
-import { LopHocService } from 'src/app/services/lop-hoc.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DetailHocVienComponent } from '../detail-hoc-vien/detail-hoc-vien.component';
-import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service';
+import { ToastrService } from 'ngx-toastr';
+import { DetailHocVienComponent } from 'src/app/components/admin/class/detail-hoc-vien/detail-hoc-vien.component';
 import { DangKyKH } from 'src/app/models/DangKyKH';
+import { HocVien } from 'src/app/models/HocVien';
 import { LopHoc } from 'src/app/models/LopHoc';
+import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service';
+import { LopHocService } from 'src/app/services/lop-hoc.service';
+import { StorageService } from 'src/app/services/storage.service';
 import * as XLSX from 'xlsx';
 import * as XLSXStyle from 'xlsx-js-style';
+
 @Component({
-  selector: 'app-list-hoc-vien',
-  templateUrl: './list-hoc-vien.component.html',
-  styleUrls: ['./list-hoc-vien.component.css'],
+  selector: 'app-list-hv-lop',
+  templateUrl: './list-hv-lop.component.html',
+  styleUrls: ['./list-hv-lop.component.css'],
 })
-export class ListHocVienComponent {
+export class ListHvLopComponent {
   danhSachHocVien: MatTableDataSource<HocVien> = new MatTableDataSource();
   danhSachHocVienFull: HocVien[] = [];
   displayedColumns: string[] = [
@@ -61,27 +62,26 @@ export class ListHocVienComponent {
     ); // Lấy maLopHoc từ URL
     this.loadDanhSachHocVienCuaLopHoc();
     this.layLopHoc();
-    this.loadDsHocVienDiemDanh(this.maLopHoc)
-    this.loadThongTinLopHoc(this.maLopHoc)
+    this.loadDsHocVienDiemDanh(this.maLopHoc);
+    this.loadThongTinLopHoc(this.maLopHoc);
   }
   //lấy thông tin lớp học
-  loadThongTinLopHoc(ma:any) {
+  loadThongTinLopHoc(ma: any) {
     this.lopHocService.layLopHoc(ma).subscribe({
-      next: data => {
-        this.lopHocInfo = data
-         this.nameFile = `Danh sách học viên lớp ${this.lopHocInfo.tenLop} `;
-      }
-      ,
-      error: err => {
-        console.log(err)
-      }
-    })
+      next: (data) => {
+        this.lopHocInfo = data;
+        this.nameFile = `Danh sách học viên lớp ${this.lopHocInfo.tenLop} `;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
   //lấy danh sách xuất excel
   loadDsHocVienDiemDanh(ma: any) {
     this.lopHocService.getHocViensDiemDanhhByLopHoc(ma).subscribe({
       next: (data) => {
-        this.dataExel = data
+        this.dataExel = data;
         console.log(data);
       },
       error: (err) => {},
@@ -189,7 +189,7 @@ export class ListHocVienComponent {
   }
   return() {
     this.router.navigate([
-      `/nhan-vien/quan-ly-khoa-hoc/${this.maKhoaHoc}/danh-sach-lop-hoc`,
+      `/giao-vien/quan-ly-lop-hoc`,
     ]);
   }
 }

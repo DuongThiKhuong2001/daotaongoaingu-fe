@@ -130,21 +130,16 @@ mat-paginator {
 }
 
 .back-icon {
-
-  float: right;
   float: right;
   justify-content: flex-end;
-  /* Đặt nút bên phải */
   margin-left: auto;
   margin: 10px;
-  /* Điều chỉnh khoảng cách giữa icon và nút */
+
+}
+.excel {
+  justify-content: flex-end;
+  margin-left: auto;
+  color: green;
+  margin: 10px;
 }
 
-mat-icon.delete {
-  color: red;
-}
-
-/* Đổi màu của biểu tượng "delete" sang màu đỏ khi hover */
-mat-icon.delete:hover {
-  color: red;
-}

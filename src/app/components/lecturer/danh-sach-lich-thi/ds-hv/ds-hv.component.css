@@ -93,6 +93,7 @@ mat-paginator {
 .hidden {
   display: none !important;
 }
+
 .back-icon {
   float: right;
   justify-content: flex-end;

@@ -32,13 +32,15 @@
       <ng-container matColumnDef="thongbao">
         <mat-header-cell *matHeaderCellDef>Gửi thông báo</mat-header-cell>
         <mat-cell *matCellDef="let LopHoc">
-         <mat-icon matTooltip="Gửi thông báo cho Lớp" (click)="ThongBaoLop(LopHoc)"
-              >send </mat-icon
-            >
+          <mat-icon
+            matTooltip="Gửi thông báo cho Lớp"
+            (click)="ThongBaoLop(LopHoc)"
+            >message
+          </mat-icon>
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="dshv">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Ds học viên</mat-header-cell>
         <mat-cell *matCellDef="let LopHoc">
           <mat-icon matTooltip="Danh sách học viên" (click)="listHv(LopHoc)"
             >people</mat-icon
@@ -51,12 +53,21 @@
           <mat-icon matTooltip="Xem chi tiết" (click)="detailClass(LopHoc)"
             >infor
           </mat-icon>
-          <mat-icon matTooltip="Xem chi tiết" (click)="taiLen(LopHoc.maLop)"
-            >system_update
-          </mat-icon>
-          <mat-icon matTooltip="Xem chi tiết" (click)="taiXuong(LopHoc.maLop)"
-          >save_alt
-        </mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tailen">
+        <mat-header-cell *matHeaderCellDef>Điểm danh</mat-header-cell>
+        <mat-cell *matCellDef="let LopHoc">
+           <mat-icon matTooltip="Cập nhật file" class="excel"
+            (click)="taiLen(LopHoc.maLop)">cloud_upload</mat-icon>
+        </mat-cell>
+      </ng-container>
+       <ng-container matColumnDef="taixuong">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let LopHoc">
+          <mat-icon matTooltip="Tải file" class="excel"
+            (click)="taiXuong(LopHoc.maLop)">save_alt</mat-icon>
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
