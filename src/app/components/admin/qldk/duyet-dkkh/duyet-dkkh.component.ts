@@ -65,7 +65,7 @@ export class DuyetDkkhComponent implements OnInit {
     if(this.data.isThem === true){
       this.lopService.addHocVienToLopHoc(body).subscribe({
         next: (data) => {
-          if (data.message && data.mesage === 'maxed') {
+          if (data.message && data.mesage === 'message') {
             this.toastr.warning('Số lượng học viên đã đạt tối đa!');
           } else {
             this.dialogRef.close('ok');

@@ -11,11 +11,11 @@ import { HinhThucHoc } from 'src/app/models/LopHoc';
   styleUrls: ['./edit-class.component.css'],
 })
 export class EditClassComponent implements OnInit {
-  editForm: FormGroup;
+  editForm!: FormGroup;
   availableLichHoc: any[] = [];
   availablePhongHoc: any[] = [];
   hinhThucHocs: HinhThucHoc[] = [];
-  isEdit = false;
+
   constructor(
     private dialogRef: MatDialogRef<EditClassComponent>,
     private formBuilder: FormBuilder,
@@ -24,20 +24,32 @@ export class EditClassComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: {
       lopHoc: any;
+      isEdit: boolean;
     }
   ) {
-    this.editForm = this.formBuilder.group({
-      lichHoc: [this.data.lopHoc.lichHoc.maLichHoc, Validators.required],
-      phongHoc: ['', Validators.required],
-      hinhThucHoc: [this.data.lopHoc.hinhThucHoc, Validators.required],
-    });
+    if (this.data.isEdit === true) {
+      this.editForm = this.formBuilder.group({
+        lichHoc: [this.data.lopHoc.lichHoc.maLichHoc, Validators.required],
+        phongHoc: ['', Validators.required],
+        hinhThucHoc: [this.data.lopHoc.hinhThucHoc, Validators.required],
+      });
+    }
+    if (this.data.isEdit === false) {
+      this.editForm = this.formBuilder.group({
+        lichHoc: ['', Validators.required],
+        phongHoc: ['', Validators.required],
+        hinhThucHoc: ['', Validators.required],
+      });
+    }
     this.setupPhongHocValidators();
     this.hinhThucHocs = Object.values(HinhThucHoc);
   }
 
   ngOnInit(): void {
     this.getAvailableLichHoc();
-    this.getAvailablePhongHoc(this.data.lopHoc.lichHoc.maLichHoc);
+    if (this.data.isEdit === true) {
+      this.getAvailablePhongHoc(this.data.lopHoc.lichHoc.maLichHoc);
+    }
   }
 
   isOnline(): boolean {

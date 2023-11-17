@@ -70,14 +70,17 @@ export class CourseComponent {
     const jsonData = { isThem: false, tenHocVien: null };
     const jsonParam = JSON.stringify(jsonData);
     //component class
-    this.router.navigate([`/nhan-vien/quan-ly-khoa-hoc/${khoaHoc.maKhoaHoc}/danh-sach-lop-hoc`,  { data: jsonParam }]);
+    this.router.navigate([
+      `/nhan-vien/quan-ly-khoa-hoc/${khoaHoc.maKhoaHoc}/danh-sach-lop-hoc`,
+      { data: jsonParam },
+    ]);
   }
 
   loadDanhSachKhoaHoc(
     page: number = 0,
     size: number = 10,
     sortBy: string = '',
-    sortDir: string = 'ASC'
+    sortDir: string = 'DESC'
   ) {
     this.khoahocService
       .getKhoaHocList(page, size, sortBy, sortDir, this.searchTerm)

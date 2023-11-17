@@ -30,20 +30,25 @@ export class DeleteClassComponent {
 
   accept() {
     // Call the API service to delete the type class
-    this.lopHocService.xoaLopHoc(this.maLopHoc).subscribe({
-      next: (data: any) => {
-        if (data.message === 'cant-delete') {
-          // Handle the case where the deletion is not allowed
-          this.toastr.warning('Không thể xóa lớp học này.');
-        } else {
-          // Handle other cases or errors
-          this.toastr.success('Bạn đã xóa thành công!');
-          this.dialogRef.close('accept');
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+  this.lopHocService.xoaLopHoc(this.maLopHoc).subscribe({
+    next: (data: any) => {
+      if (data.message && data.message === 'cant-delete') {
+        // Xử lý trường hợp không thể xóa
+        this.toastr.warning('Không thể xóa lớp học này.');
+      } else {
+        // Xử lý các trường hợp khác hoặc lỗi
+        this.toastr.success('Bạn đã xóa thành công!');
+        this.dialogRef.close('accept');
+      }
+    },
+    error: (err) => {
+      if (err.status === 409) {
+        // Handle the case where the deletion is not allowed
+        this.toastr.warning('Không thể xóa lớp học này.');
+      }
+      console.log(err);
+    },
+  });
+
   }
 }

@@ -60,8 +60,8 @@ export class ClassComponent {
       const jsonParam = params.get('data');
       if (jsonParam !== null) {
         this.data = JSON.parse(jsonParam);
-        if(this.data.tenHocVien !== null){
-          this.loadLopHocCu()
+        if (this.data.tenHocVien !== null) {
+          this.loadLopHocCu();
         }
       } else {
         this.data = null;
@@ -70,6 +70,7 @@ export class ClassComponent {
 
     console.log(this.data);
   }
+  //lấy lớp học cũ để đổi lớp cho học viên
   loadLopHocCu() {
     this.lopHocService
       .layLopHocHVDTGTMKH(this.data.tenHocVien, this.maKhoaHoc)
@@ -82,6 +83,7 @@ export class ClassComponent {
         },
       });
   }
+  //mã khóa học được nhận từ component course
   loadDL() {
     this.lopHocService
       .layDanhSachLopCuaKhoaHoc(this.maKhoaHoc)
@@ -123,10 +125,13 @@ export class ClassComponent {
     });
   }
 
-  editclass(lopHoc: LopHoc): void {
+  editclass(lopHoc: LopHoc, isEdit: boolean): void {
     const dialogRef = this.dialog.open(EditClassComponent, {
       width: '45%',
-      data: { lopHoc },
+      data: {
+        lopHoc: lopHoc,
+        isEdit: isEdit,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -174,9 +179,7 @@ export class ClassComponent {
       next: (data) => {
         console.log(data);
         if (data.message && data.message === 'null') {
-          this.toastr.warning(
-            'Chưa sắp lịch học cho lớp học này'
-          );
+          this.toastr.warning('Chưa sắp lịch học cho lớp học này');
         } else {
           this.router.navigate([
             `/nhan-vien/quan-ly-khoa-hoc/${this.maKhoaHoc}/danh-sach-lop-hoc/${lopHoc.maLop}/danh-sach-giao-vien-hop-le`,
@@ -248,7 +251,7 @@ export class ClassComponent {
           console.error('Lỗi khi thêm học viên vào lớp học', error);
         },
       });
-    } else if (this.data.loai === 'chuyen'){
+    } else if (this.data.loai === 'chuyen') {
       this.lopHocService.chuyenHocVien(this.lopHocCu.maLop, body).subscribe({
         next: (data) => {
           if (data.message && data.mesage === 'maxed') {
@@ -283,6 +286,6 @@ export class ClassComponent {
   }
 
   return() {
-     this.router.navigate([`/nhan-vien/khoa-hoc`]);
+    this.router.navigate([`/nhan-vien/khoa-hoc`]);
   }
 }

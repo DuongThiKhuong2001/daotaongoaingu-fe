@@ -45,16 +45,16 @@
           >Lịch học</mat-header-cell
         >
         <mat-cell *matCellDef="let LopHoc">
-          <mat-icon
+           <mat-icon
             matTooltip="Chỉnh sửa lịch học"
             *ngIf="LopHoc.lichHoc !== null"
-            (click)="editclass(LopHoc)"
+            (click)="editclass(LopHoc, true)"
             >edit</mat-icon
           >
           <mat-icon
             matTooltip="Thêm lịch học"
             *ngIf="LopHoc.lichHoc === null"
-            (click)="editclass(LopHoc)"
+            (click)="editclass(LopHoc, false)"
             >add_circle</mat-icon
           >
         </mat-cell>

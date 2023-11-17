@@ -75,6 +75,13 @@
         >
           <mat-icon>picture_as_pdf</mat-icon>
         </button>
+        <button
+        mat-icon-button
+        matTooltip="Lịch học"
+        (click)="loadThongTinLopHoc(DangKyKH.khoaHoc.maKhoaHoc)"
+      >
+        <mat-icon>infor </mat-icon>
+      </button>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

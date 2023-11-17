@@ -10,6 +10,9 @@ import { DangKyKH } from 'src/app/models/DangKyKH';
 import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { TaiLieuService } from 'src/app/services/tai-lieu.service';
+import { LopHocService } from 'src/app/services/lop-hoc.service';
+import { DetailClassComponent } from '../../admin/class/detail-class/detail-class.component';
+import { LopHoc } from 'src/app/models/LopHoc';
 
 @Component({
   selector: 'app-my-course',
@@ -42,7 +45,8 @@ export class MyCourseComponent implements OnInit {
     private dialog: MatDialog,
     private loaiLopService: LoaiLopService,
     private taiLieuService: TaiLieuService,
-    private router: Router
+    private router: Router,
+    private lopHocService: LopHocService
   ) {}
 
   ngOnInit(): void {
@@ -142,6 +146,34 @@ export class MyCourseComponent implements OnInit {
         return { color: 'green' }; // Màu xanh dương cho "Da_Sap_Lich"
       default:
         return {}; // Màu mặc định hoặc trường hợp khác
+    }
+  }
+
+  loadThongTinLopHoc(maKhoaHoc: any) {
+    this.lopHocService.getLopHocForHocVienInKhoaHoc(maKhoaHoc).subscribe({
+      next: (data) => {
+        if (data.message && data.message === 'notfound') {
+          this.toastr.warning('Chưa sắp lịch!');
+        } else {
+          this.detailClass(data);
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  detailClass(lopHoc: LopHoc | null): void {
+    if (lopHoc) {
+      console.log(lopHoc);
+      var popup = this.dialog.open(DetailClassComponent, {
+        data: {
+          lopHoc: lopHoc,
+        },
+        width: '40%',
+        enterAnimationDuration: '300ms',
+        exitAnimationDuration: '300ms',
+      });
     }
   }
 }
