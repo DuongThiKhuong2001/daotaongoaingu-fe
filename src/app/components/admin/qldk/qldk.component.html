@@ -54,7 +54,9 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Trạng thái</mat-header-cell
       >
-      <mat-cell *matCellDef="let DangKyKH">
+      <mat-cell *matCellDef="let DangKyKH"
+       [ngStyle]="getStatusColor(DangKyKH.trangThaiDangKyHoc)"
+      >
         {{ translateStatus(DangKyKH.trangThaiDangKyHoc) }}
       </mat-cell>
     </ng-container>

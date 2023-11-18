@@ -70,8 +70,8 @@ export class QldkComponent {
   loadDanhSachDKKhoaHoc(
     page: number = 0,
     size: number = 10,
-    sortBy: string = '',
-    sortDir: string = 'ASC'
+    sortBy: string = 'ngayDangKy',
+    sortDir: string = 'DESC'
   ) {
     this.dangKyKhoaHocService
       .getAllDangKyKhoaHoc(page, size, sortBy, sortDir, this.searchTerm)
@@ -119,6 +119,18 @@ export class QldkComponent {
         return 'ĐÃ PHÂN LỚP';
       default:
         return statusCode; // Or return a default/fallback status if you wish
+    }
+  }
+  getStatusColor(status: string) {
+    switch (status) {
+      case 'DA_DUYET':
+        return { color: 'blue' };
+      case 'CHUA_DUYET':
+        return { color: 'red' }; // Màu xanh cho "DA_DUYET"
+      case 'DA_PHAN_LOP':
+        return { color: 'green' }; // Màu xanh dương cho "DA_PHAN_LOP"
+      default:
+        return {}; // Màu mặc định hoặc trường hợp khác
     }
   }
 

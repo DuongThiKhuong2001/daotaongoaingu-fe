@@ -239,7 +239,7 @@ export class ClassComponent {
           console.log(data);
           if (data.message && data.message === 'maxed') {
             this.toastr.warning('Số lượng học viên đã đạt tối đa!');
-          }
+          }else
           if (data.message && data.message === 'exist') {
             this.toastr.warning('Học viên đã nằm trong lớp này!');
           } else {
@@ -254,7 +254,7 @@ export class ClassComponent {
     } else if (this.data.loai === 'chuyen') {
       this.lopHocService.chuyenHocVien(this.lopHocCu.maLop, body).subscribe({
         next: (data) => {
-          if (data.message && data.mesage === 'maxed') {
+          if (data.message && data.message === 'maxed') {
             this.toastr.warning('Số lượng học viên đã đạt tối đa!');
           } else {
             this.capNhatTrangThaiDKHoc(this.data.maDangKy);
