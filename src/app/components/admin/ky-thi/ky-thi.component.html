@@ -12,7 +12,17 @@
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="search">
+  <button
+    mat-stroked-button
+    color="primary"
+    class="align-right-button"
+    (click)="addKyThi()"
+  >
+    Thêm mới <mat-icon>add_circle </mat-icon>
+  </button>
+
+  <div class="filter">
+  <mat-form-field appearance="outline" >
     <mat-label>Chọn chứng chỉ</mat-label>
     <mat-select [(ngModel)]="selectedChungChi" (ngModelChange)="onChungChiChange()">
       <mat-option *ngFor="let chungChi of chungChis" [value]="chungChi.maChungChi">
@@ -20,7 +30,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
+</div>
   <!-- <mat-form-field appearance="outline" class="search">
     <mat-label>Chọn năm</mat-label>
     <mat-select [(ngModel)]="selectedNam" (ngModelChange)="onNamChange()">
@@ -39,15 +49,6 @@
     </mat-select>
   </mat-form-field> -->
 
-</div>
-  <button
-    mat-stroked-button
-    color="primary"
-    class="align-right-button"
-    (click)="addKyThi()"
-  >
-    Thêm mới <mat-icon>add_circle </mat-icon>
-  </button>
 
   <mat-table [dataSource]="danhSachKyThi" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">

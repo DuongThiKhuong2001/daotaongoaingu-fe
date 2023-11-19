@@ -512,6 +512,9 @@ const routes: Routes = [
       { path: 'dang-ky', component: GuestResgisterAccountComponent },
     ],
   },
+
+ 
+
   {
     path: 'dang-nhap',
     component: LoginComponent,

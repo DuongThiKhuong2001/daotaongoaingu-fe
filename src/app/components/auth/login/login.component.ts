@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { GuestResgisterAccountComponent } from '../../guest/guest-resgister-account/guest-resgister-account.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +28,8 @@ export class LoginComponent implements OnInit {
     private storageService: StorageService,
     private router: Router,
     private toastr: ToastrService,
-    private taiKhoanService: TaiKhoanService
+    private taiKhoanService: TaiKhoanService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +53,6 @@ export class LoginComponent implements OnInit {
         if (data.message && data.message === 'empty') {
           console.log(data);
           this.storageService.signOut();
-
         }
       },
       error: (err) => {
@@ -91,6 +93,20 @@ export class LoginComponent implements OnInit {
           console.log(err);
         }
       },
+    });
+  }
+
+  dangky() {
+    this.OpenFormDK();
+  }
+  OpenFormDK() {
+    var _popup = this.dialog.open(GuestResgisterAccountComponent, {
+      width: '40%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+    });
+    _popup.afterClosed().subscribe((item) => {
+      // console.log(item)
     });
   }
 }

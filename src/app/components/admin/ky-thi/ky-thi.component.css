@@ -92,8 +92,7 @@ mat-paginator {
 }
 
 .align-right-button {
- margin: 10px;
+  float: right;
+  justify-content: flex-end;
+  margin-left: auto;
 }
-
-
-
