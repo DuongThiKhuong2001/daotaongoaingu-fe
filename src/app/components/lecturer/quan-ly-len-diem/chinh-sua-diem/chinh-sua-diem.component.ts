@@ -70,7 +70,7 @@ export class ChinhSuaDiemComponent implements OnInit {
             this.toastr.success('Cập nhật điểm thành công!');
           },
           error: (err) => {
-            this.toastr.error(err);
+           this.toastr.error('Có lỗi xảy ra!');
           },
         });
     }

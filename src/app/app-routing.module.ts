@@ -510,10 +510,12 @@ const routes: Routes = [
     children: [
       { path: '', component: GuestHomeComponent },
       { path: 'dang-ky', component: GuestResgisterAccountComponent },
+      {
+        path: 'dang-nhap',
+        component: LoginComponent,
+      },
     ],
   },
-
- 
 
   {
     path: 'dang-nhap',
