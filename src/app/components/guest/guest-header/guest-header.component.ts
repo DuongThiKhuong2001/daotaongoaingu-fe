@@ -41,17 +41,5 @@ export class GuestHeaderComponent {
     });
   }
 
-  dangnhap() {
-    this.OpenFormDN();
-  }
-  OpenFormDN() {
-    var _popup = this.dialog.open(LoginComponent, {
-    
-      enterAnimationDuration: '300ms',
-      exitAnimationDuration: '300ms',
-    });
-    _popup.afterClosed().subscribe((item) => {
-      // console.log(item)
-    });
-  }
+  
 }

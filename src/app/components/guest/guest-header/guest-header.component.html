@@ -1,12 +1,12 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+<nav class="navbar navbar-expand-lg fixed-top " style="height: 80px;">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" >
       <img
         src="https://api.logo.com/api/v2/images?logo=logo_517f290c-2655-4b5c-b818-a48cbf6c95be&format=webp&margins=0&quality=60&width=500&background=transparent&u=1691841197"
-        height="60"
+        height="50"
         alt=""
         loading="lazy"
       />
@@ -25,33 +25,39 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/trang-chu">Trang chủ</a>
+          <a class="nav-link" routerLink="/trang-chu">TRANG CHỦ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dang-nhap">Khóa học</a>
+          <a class="nav-link" routerLink="/trang-chu/dang-nhap">KHÓA HỌC</a>
         </li>
-         <li class="nav-item">
-          <a class="nav-link" routerLink="/dang-nhap">Lịch khai giảng</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/trang-chu/dang-nhap">LỊCH KHAI GIẢNG</a>
         </li>
       </ul>
-
     </div>
+    <ul class="sdt-info">
+      <p><i class="fas fa-phone me-2"></i>01 234 567 88</p>
+    </ul>
+
+    <ul class="user-info">
+      <p><i class="fas fa-envelope me-2"></i> hocanhngu@gmail.com</p>
+    </ul>
 
     <!-- <button mat-mini-fab color="primary"  [matMenuTriggerFor]="menu">
           <mat-icon>menu</mat-icon>
         </button> -->
     <button
-      mat-stroked-button color="primary"
+      mat-stroked-button
+      color="primary"
       [matMenuTriggerFor]="menu"
-      class="user mt-2 d-flex align-items-center"
+      class="user mt-4 align-items-center custom-margin-bottom"
     >
-
       Xin chào! {{ loggedInUsername }}
-      <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+      <mat-icon class="user-image-icon ml-1 ">keyboard_arrow_down</mat-icon>
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/trang-chu/dang-nhap" >
+      <button mat-menu-item routerLink="/trang-chu/dang-nhap">
         <mat-icon>login</mat-icon> Đăng nhập
       </button>
       <button mat-menu-item routerLink="/trang-chu/dang-ky">

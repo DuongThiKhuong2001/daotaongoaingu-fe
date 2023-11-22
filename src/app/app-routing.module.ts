@@ -521,6 +521,20 @@ const routes: Routes = [
     path: 'dang-nhap',
     component: LoginComponent,
   },
+
+  // {
+  //   path: 'trang-chu',
+  //   component: GuestComponent,
+  //   children: [
+  //     { path: '', component: GuestHomeComponent },
+  //     {
+  //       path: 'dang-nhap',
+  //       component: LoginComponent,
+  //     },
+
+  //   ],
+  // },
+
   { path: '403', component: Page403Component },
   { path: 'bao-tri', component: Page0Component },
   { path: '**', component: Page404Component },

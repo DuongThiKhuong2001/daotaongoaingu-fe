@@ -1,6 +1,3 @@
-.navbar-dark .nav-item .nav-link {
-  color: #ffffff;
-}
 
 .navbar-dark .nav-item .nav-link:hover {
 
@@ -8,14 +5,39 @@
   border-radius: 0.25rem;
 
 }
-
+.navbar  {
+background-color: rgb(229, 229, 230);
+height: min-content;
+}
 .nav-item a.nav-link {
   font-weight: bold;
   color: rgb(8, 8, 126);
-  font-size: large;
+
 }
+
 .fa-li {
   position: relative;
   left: 0;
 }
 
+.user-info {
+  font-weight: bold;
+  color: rgb(8, 8, 126);
+  border-radius: 0.25rem;
+  margin-top: 40px;
+  margin-right: 20px;
+
+}
+.sdt-info{
+  font-weight: bold;
+    color: rgb(8, 8, 126);
+    border-radius: 0.25rem;
+    margin-top: 40px;
+    margin-right:20px;
+    position: relative;
+}
+
+.custom-margin-bottom {
+  margin-bottom: 10px;
+  /* Điều chỉnh giá trị tùy thuộc vào nhu cầu của bạn */
+}

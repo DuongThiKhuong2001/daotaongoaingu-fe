@@ -1,67 +1,60 @@
 <mat-card>
   <form [formGroup]="formDatas" (ngSubmit)="submitForm()">
-    <div class="row">
-      <div class="col text-center p-2 mb-3 bg-light">
-        <span class="fs-3">Đăng ký tài khoản</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="hoTen" class="form-label">Họ và tên</label>
-        <input
-          type="text"
-          class="form-control"
-          id="hoTen"
-          formControlName="hoTen"
-          matInput
-          required
-        />
-        <mat-error *ngIf="formData.hoTen.errors?.['required']">
-          Họ tên bắt buộc
-        </mat-error>
-        <mat-error
-          *ngIf="formData.hoTen.errors?.['pattern'] || formData.hoTen.errors?.['minlength']"
-        >
-          Họ tên không hợp lệ!
-        </mat-error>
-      </div>
-      <div class="col">
-        <label for="tenDangNhap" class="form-label">Tên đăng nhập</label>
-        <input
-          type="text"
-          class="form-control"
-          id="tenDangNhap"
-          formControlName="tenDangNhap"
-          matInput
-          required
-        />
-        <mat-error *ngIf="formData.tenDangNhap.errors?.['required'] ">
-          Tên đăng nhập là bắt buộc!
-        </mat-error>
-        <mat-error *ngIf="formData.tenDangNhap.errors?.['pattern'] ">
-          Tên đăng nhập phải đúng định dạng!
-        </mat-error>
-      </div>
+    <div class="container">
       <div class="row">
+        <div class="col text-center p-2 mb-3 bg-light">
+          <span class="fs-3">Đăng ký tài khoản</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- First Column -->
         <div class="col">
-          <label for="email" class="form-label">Email</label>
+          <label for="hoTen" class="form-label">Họ và tên</label>
           <input
-            type="email"
-            class="form-control"
-            id="email"
-            formControlName="email"
+            type="text"
+            class="form-control "
+            id="hoTen"
+            formControlName="hoTen"
             matInput
             required
           />
-          <mat-error *ngIf="formData.email.errors?.['required'] ">
-            Email là bắt buộc!
+          <mat-error *ngIf="formDatas.controls.hoTen.errors?.['required']">
+            Họ tên bắt buộc!
           </mat-error>
-          <mat-error *ngIf="formData.email.errors?.['email']">
-            Email không đúng định dạng!
+          <mat-error
+            *ngIf="formDatas.controls.hoTen.errors?.['pattern'] || formDatas.controls.hoTen.errors?.['minlength']"
+          >
+            Họ tên không hợp lệ!
           </mat-error>
+          <!-- Error messages here -->
         </div>
-      </div>
-      <div class="row">
+
+        <!-- Second Column -->
+        <div class="col">
+          <label for="tenDangNhap" class="form-label">Tên đăng nhập</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tenDangNhap"
+            formControlName="tenDangNhap"
+            matInput
+            required
+          />
+          <mat-error
+            *ngIf="formDatas.controls.tenDangNhap.errors?.['required'] "
+          >
+            Tên đăng nhập là bắt buộc!
+          </mat-error>
+          <mat-error
+            *ngIf="formDatas.controls.tenDangNhap.errors?.['pattern'] "
+          >
+            Tên đăng nhập phải đúng định dạng!
+          </mat-error>
+          <!-- Error messages here -->
+        </div>
+
+        <!-- Third Column -->
         <div class="col">
           <label for="sdt" class="form-label">Số điện thoại</label>
           <input
@@ -72,23 +65,21 @@
             matInput
             required
           />
-          <mat-error *ngIf="formData.soDienThoai.errors?.['required'] ">
+          <mat-error
+            *ngIf="formDatas.controls.soDienThoai.errors?.['required'] "
+          >
             Số điện thoại là bắt buộc!
           </mat-error>
-          <mat-error *ngIf="formData.soDienThoai.errors?.['pattern']">
+          <mat-error *ngIf="formDatas.controls.soDienThoai.errors?.['pattern']">
             Số điện thoại không hợp lệ! (Ví dụ: 0123456789)
           </mat-error>
-        </div>
-        <div class="col">
-          <div class="m-1">Giới tính</div>
-          <mat-select formControlName="gioiTinh" class="form-control">
-            <mat-option value="Nam">Nam</mat-option>
-            <mat-option value="Nu">Nữ</mat-option>
-          </mat-select>
+          <!-- Error messages here -->
         </div>
       </div>
+
       <div class="row">
-        <div class="col mb-3">
+        <!-- Fourth Column -->
+        <div class="col">
           <label for="password" class="form-label">Mật khẩu</label>
           <input
             type="password"
@@ -98,38 +89,71 @@
             matInput
             required
           />
-          <mat-error *ngIf="formData.matKhau.errors?.['required'] ">
+          <mat-error *ngIf="formDatas.controls.matKhau.errors?.['required'] ">
             Mật khẩu là bắt buộc!
           </mat-error>
-          <mat-error *ngIf="formData.matKhau.errors?.['pattern']">
+          <mat-error *ngIf="formDatas.controls.matKhau.errors?.['pattern']">
             Mật khẩu phải bao gồm cả chữ và số và có ít nhất 6 ký tự!
           </mat-error>
-          <div class="form-text"></div>
+          <!-- Error messages here -->
         </div>
-        <div class="col mb-3">
-          <div class="col mb-3">
-            <label for="repeat" class="form-label">Nhập lại mật khẩu</label>
-            <input
-              type="password"
-              class="form-control"
-              id="repeat"
-              formControlName="repeatPassword"
-              matInput
-            />
-            <mat-error *ngIf="formData.repeatPassword.errors?.['required']">
-              Nhập lại mật khẩu là bắt buộc!
-            </mat-error>
-            <mat-error
-              *ngIf="formDatas.value.matKhau !== formDatas.value.repeatPassword"
-            >
-              Mật khẩu không khớp!
-            </mat-error>
-          </div>
-          <div class="form-text"></div>
+
+        <!-- Fifth Column -->
+        <div class="col">
+          <label for="repeat" class="form-label">Nhập lại mật khẩu</label>
+          <input
+            type="password"
+            class="form-control"
+            id="repeat"
+            formControlName="repeatPassword"
+            matInput
+          />
+          <mat-error
+            *ngIf="formDatas.controls.repeatPassword.errors?.['required']"
+          >
+            Nhập lại mật khẩu là bắt buộc!
+          </mat-error>
+          <mat-error
+            *ngIf="formDatas.value.matKhau !== formDatas.value.repeatPassword"
+          >
+            Mật khẩu không khớp!
+          </mat-error>
+        </div>
+
+        <!-- Sixth Column -->
+        <div class="col">
+          <div class="m-1">Giới tính</div>
+          <mat-select formControlName="gioiTinh" class="form-control">
+            <mat-option value="Nam">Nam</mat-option>
+            <mat-option value="Nu">Nữ</mat-option>
+          </mat-select>
+
+          <!-- Error messages here -->
         </div>
       </div>
       <div class="row">
-        <div class="col mb-3">
+        <!-- Eighth Column -->
+        <div class="col">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            matInput
+            required
+          />
+          <mat-error *ngIf="formDatas.controls.email.errors?.['required'] ">
+            Email là bắt buộc!
+          </mat-error>
+          <mat-error *ngIf="formDatas.controls.email.errors?.['email']">
+            Email không đúng định dạng!
+          </mat-error>
+          <!-- Error messages here -->
+        </div>
+
+        <!-- Ninth Column -->
+        <div class="col">
           <label for="diachi" class="form-label">Địa chỉ</label>
           <input
             type="text"
@@ -139,12 +163,13 @@
             matInput
             required
           />
-          <mat-error *ngIf="formData.diaChi.errors?.['required'] ">
+          <mat-error *ngIf="formDatas.controls.diaChi.errors?.['required'] ">
             Địa chỉ là bắt buộc!
           </mat-error>
-          <div class="form-text"></div>
+          <!-- Error messages here -->
         </div>
-        <div class="col mb-3">
+
+        <div class="col">
           <label for="soDTNguoiThan" class="form-label">SĐT người thân</label>
           <input
             type="text"
@@ -154,14 +179,19 @@
             matInput
             required
           />
-          <mat-error *ngIf="formData.soDTNguoiThan.errors?.['pattern']">
+          <mat-error
+            *ngIf="formDatas.controls.soDTNguoiThan.errors?.['pattern']"
+          >
             Số điện thoại không hợp lệ! (Ví dụ: 0123456789)
           </mat-error>
-          <div class="form-text"></div>
+          <!-- Error messages here -->
         </div>
+
+        <!-- Tenth Column -->
       </div>
       <div class="row">
-        <div class="col mb-3">
+        <!-- Eighth Column -->
+        <div class="col">
           <label for="lop" class="form-label">Lớp</label>
           <input
             type="number"
@@ -171,9 +201,10 @@
             matInput
             required
           />
-          <div class="form-text"></div>
         </div>
-        <div class="col mb-3">
+
+        <!-- Ninth Column -->
+        <div class="col">
           <label class="form-label">Trường học</label>
           <input
             type="text"
@@ -183,10 +214,8 @@
             matInput
             required
           />
-          <div class="form-text"></div>
         </div>
-      </div>
-      <div class="row">
+
         <div class="col">
           <mat-form-field>
             <mat-label>Choose a date</mat-label>
@@ -206,6 +235,7 @@
       </div>
 
       <div class="row">
+        <!-- Eleventh Column -->
         <div class="col-6 offset-3">
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Đăng ký</button>

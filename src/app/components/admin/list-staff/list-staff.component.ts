@@ -132,7 +132,8 @@ export class ListStaffComponent implements OnInit {
         data: {
           staff: staff,
         },
-        width: '40%',
+        width: '45%',
+        height:'75%',
         enterAnimationDuration: '300ms',
         exitAnimationDuration: '300ms',
       });

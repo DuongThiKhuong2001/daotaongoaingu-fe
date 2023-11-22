@@ -34,7 +34,7 @@ export class GuestResgisterAccountComponent {
       '',
       [
         Validators.required,
-        Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d).{6,8}$/),
+        Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d).{6,20}$/),
       ],
     ],
     matKhau: [
@@ -52,7 +52,7 @@ export class GuestResgisterAccountComponent {
       '',
       [Validators.required, Validators.pattern('^[0-9]{10}$')],
     ],
-    ngaySinh: [new Date(), Validators.required],
+    ngaySinh: ['', Validators.required],
     quyen: ['HocVien'],
 
     lop: [],
@@ -71,7 +71,7 @@ export class GuestResgisterAccountComponent {
           } else if (data.message && data.message === 'email-exist') {
             this.toastr.error('Email đã tồn tại!');
           } else {
-            this.toastr.success('Thêm thành công!');
+            this.toastr.success('Đăng ký tài khoản thành công!');
             this.router.navigate(['trang-chu']);
           }
         },

@@ -21,8 +21,9 @@ mat-card {
   box-shadow: 0 0 100px rgba(136, 106, 189, 0.878);
   border-radius: 10px;
   z-index: 999;
-}
+  margin-top: 40px;
 
+}
 
 mat-card-content {
   display: flex;

@@ -8,7 +8,7 @@
     </div>
   </mat-card-title>
 
-  <h3 class="text-center mb-4">Bạn có tài khoản?</h3>
+  <h3 class="text-center mb-4">ĐĂNG NHẬP</h3>
 
   <mat-card-content>
     <form
@@ -50,10 +50,10 @@
           />
           <mat-error *ngIf="password.invalid && f.submitted">
             <div *ngIf="password.errors?.['required']">
-             Cần có mật khẩu.
+             Cần có mật khẩu!
             </div>
             <div *ngIf="password.errors?.['minlength']">
-             Mật khẩu phải có ít nhất 6 ký tự.
+             Mật khẩu phải có ít nhất 6 ký tự!
             </div>
           </mat-error>
         </mat-form-field>
