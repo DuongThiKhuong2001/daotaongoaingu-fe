@@ -79,7 +79,7 @@ export class TypeClassComponent implements OnInit {
 
   editTypeclass(loaiLop: LoaiLop): void {
     const dialogRef = this.dialog.open(EditTypeclassComponent, {
-      width: '45%',
+      width: '40%',
       data: loaiLop,
     });
 

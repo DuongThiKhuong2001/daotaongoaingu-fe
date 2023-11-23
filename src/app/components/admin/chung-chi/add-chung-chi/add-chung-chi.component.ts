@@ -43,8 +43,9 @@ export class AddChungChiComponent implements OnInit {
       this.chungChiService.themChungChi(formData).subscribe({
         next: (data) => {
           console.log(data);
-          this.closePopup();
+
           this.toastr.success('Thêm chứng chỉ thành công!');
+          this.closePopup();
         },
         error: (err) => {
           this.toastr.error(err);

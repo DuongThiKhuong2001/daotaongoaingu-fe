@@ -1,6 +1,7 @@
-<h2 mat-dialog-title>Chỉnh sửa</h2>
+
 <div mat-dialog-content>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Chỉnh sửa</h1>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Chứng chỉ</mat-label>
       <mat-select formControlName="maChungChi">
@@ -18,12 +19,12 @@
       />
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
-      <textarea
+      <input
         matInput
         placeholder="Điểm tối thiểu"
         formControlName="diemToiThieu"
         required
-      ></textarea>
+      >
     </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
       <input

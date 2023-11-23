@@ -12,7 +12,30 @@ mat-card {
   width: 48%;
   margin: 1%;
 }
+/* Style cho form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
+/* Style cho tiêu đề */
+
+/* Style cho nội dung dialog */
+div[mat-dialog-content] {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Style cho label */
+label {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
 button {
   margin: 6px;
 }

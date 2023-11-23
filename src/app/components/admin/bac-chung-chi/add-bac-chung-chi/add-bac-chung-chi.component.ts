@@ -49,14 +49,15 @@ export class AddBacChungChiComponent implements OnInit {
     ],
   });
 
-  savetypeclass() {
+  savetypeBCC() {
     if (this.myform.valid) {
       const formData = this.myform.value;
       this.bacChungChiService.addBacChungChi(formData).subscribe({
         next: (data) => {
           console.log(data);
-          this.closePopup();
+
           this.toastr.success('Thêm bậc chứng chỉ thành công!');
+          this.closePopup();
         },
         error: (err) => {
           this.toastr.error(err);

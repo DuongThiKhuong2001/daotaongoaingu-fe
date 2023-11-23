@@ -56,7 +56,7 @@ export class EditClassroomComponent implements OnInit {
         .capNhatPhongHoc(this.data.maPhong, updatedPhong)
         .subscribe((response) => {
           if (response) {
-            // Cập nhật thành công, đóng dialog và thông báo
+
             this.toastr.success('Bạn đã chỉnh sửa thành công!');
             this.dialogRef.close(response);
           } else {

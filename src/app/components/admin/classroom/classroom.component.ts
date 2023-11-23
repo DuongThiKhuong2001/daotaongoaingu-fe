@@ -68,7 +68,7 @@ export class ClassroomComponent implements OnInit {
 
   addclassroom(): void {
     var popup = this.dialog.open(AddClassroomComponent, {
-      width: '45%',
+      width: '40%',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
     });
@@ -91,14 +91,12 @@ export class ClassroomComponent implements OnInit {
   }
   editClassroom(phongHoc: Phong): void {
     const dialogRef = this.dialog.open(EditClassroomComponent, {
-      width: '45%',
+      width: '40%',
       data: phongHoc,
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.loadDL();
-      }
+      } this.loadDL();
     });
   }
 

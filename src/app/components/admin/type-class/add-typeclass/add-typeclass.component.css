@@ -7,11 +7,6 @@ form {
 }
 
 /* Style cho tiêu đề */
-h1 {
-  color: #3f51b5;
-  /* Màu xanh của Material Design */
-  margin-bottom: 20px;
-}
 
 /* Style cho nội dung dialog */
 div[mat-dialog-content] {
@@ -44,11 +39,10 @@ mat-form-field {
 }
 
 /* Style cho các nút hành động */
-div[mat-dialog-actions] {
-  display: flex;
-  justify-content: space-between;
+div[mat-dialog-content] {
   width: 100%;
-  padding: 0 20px 20px 20px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Style cho nút Lưu */

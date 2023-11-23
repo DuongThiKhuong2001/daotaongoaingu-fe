@@ -1,6 +1,6 @@
-<h2 mat-dialog-title>Chỉnh sửa</h2>
-<div mat-dialog-content>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Chỉnh sửa</h1>
+  <div mat-dialog-content>
     <mat-form-field appearance="outline" class="full-width">
       <input
         matInput
@@ -33,19 +33,19 @@
       </mat-select>
     </mat-form-field>
     <!-- ... -->
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-stroked-button color="warn" type="submit" (click)="onCancel()">
-    Hủy
-  </button>
-  <button
-    mat-raised-button
-    color="primary"
-    type="submit"
-    [disabled]="!editForm.valid"
-    (click)="onSubmit()"
-  >
-    Lưu
-  </button>
-</div>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!editForm.valid"
+     
+    >
+      Lưu
+    </button>
+    <button mat-stroked-button color="warn" type="submit" (click)="onCancel()">
+      Hủy
+    </button>
+  </div>
+</form>
