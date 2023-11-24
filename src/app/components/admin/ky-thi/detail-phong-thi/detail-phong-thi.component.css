@@ -49,8 +49,8 @@
 
 /* Định dạng cho nội dung cột */
 .table-cell {
-  flex: 2;
-  padding: 8px 8px;
+  flex: 8;
+  padding: 8px;
 }
 
 /* Định dạng cho nút Đóng */

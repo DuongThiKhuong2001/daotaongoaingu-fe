@@ -85,7 +85,7 @@ export class PhanCongPhongThiComponent implements OnInit {
   }
   chonPhong(maLichThi: any) {
     const dialogRef = this.dialog.open(DanhSachPhongThiComponent, {
-      width: '400px',
+      width: '40%',
       data: { maLichThi }, // Pass the maLoaiLop value to the dialog
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
@@ -112,7 +112,7 @@ export class PhanCongPhongThiComponent implements OnInit {
   }
   dsHv(lichThi: any) {
     const trangThai = 1;
-   
+
     this.router.navigate([
       `/nhan-vien/quan-ly-ky-thi/${this.maKyThi}/lich-thi/${lichThi.maLichThi}/danh-sach-hoc-vien/${trangThai}`,
     ]);

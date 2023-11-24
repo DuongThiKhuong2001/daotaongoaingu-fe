@@ -65,7 +65,12 @@ export class QuanLyDangKyThiComponent {
 
   onSearch() {
     // Áp dụng bộ lọc tìm kiếm vào danhSachDKKyThi
-    this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
+    // this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
+      this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
+
+      if (this.danhSachDKKyThi.paginator) {
+        this.danhSachDKKyThi.paginator.firstPage();
+      }
   }
 
   refresh() {

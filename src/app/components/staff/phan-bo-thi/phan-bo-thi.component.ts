@@ -89,7 +89,7 @@ export class PhanBoThiComponent implements OnInit {
   }
   chiTietLich(item: any) {
     const dialogRef = this.dialog.open(ChiTietLichThiComponent, {
-      width: '45%',
+      width: '40%',
       data: { kyThi: item.kyThi, lichThi: item.lichThi },
     });
   }

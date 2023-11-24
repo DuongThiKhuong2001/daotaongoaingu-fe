@@ -5,7 +5,6 @@
 </h1>
 <mat-card>
   <div class="mat-elevation-z8" *ngIf="phong.length > 0; else noDataTemplate">
-
     <table mat-table [dataSource]="phong" class="mat-elevation-z8">
       <!-- Tên Vai Trò Column -->
       <ng-container matColumnDef="tenPhong">
@@ -23,7 +22,7 @@
         <td mat-cell *matCellDef="let element">{{ element.sucChua }}</td>
       </ng-container>
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Chọn</th>
+        <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="chon(element.maPhong)">Chọn</button></td>
       </ng-container>
       <!-- Thêm các cột khác tùy theo nhu cầu của bạn -->
@@ -36,7 +35,7 @@
       <p>Chưa có lớp học đã sắp lịch cho khóa học này.</p>
     </div>
   </ng-template>
-  <div mat-dialog-actions>
-    <button style="margin-left: 150px;margin-bottom: 8px;" (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
-  </div>
 </mat-card>
+<div mat-dialog-actions>
+    <button style="margin-left: 240px;margin-bottom: 8px;" (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
+  </div>

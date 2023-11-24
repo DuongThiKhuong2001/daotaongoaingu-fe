@@ -1,6 +1,5 @@
 /* Định dạng hộp chứa bảng */
 .table {
-
   padding: 16px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -13,18 +12,19 @@
 mat-card {
   max-height: 300px;
   overflow-y: auto;
+  margin: 16px;
 }
 
 /* Định dạng biểu tượng tìm kiếm và làm mới */
 mat-icon {
   cursor: pointer;
   font-size: 24px;
-  color: #666;
+  color: #666666;
 }
 
 /* Hover effect cho biểu tượng tìm kiếm và làm mới */
 mat-icon:hover {
-  color: #333;
+  color: #162396;
 }
 
 /* Định dạng tiêu đề bảng */
@@ -55,7 +55,7 @@ mat-row:hover {
 /* Định dạng phân trang */
 mat-paginator {
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 4px;
 }
 
 /* Định dạng nút first và last của phân trang */
@@ -69,26 +69,15 @@ mat-paginator {
   color: beige;
 }
 
-mat-card {
-  margin: 20px;
-}
 
 button {
   margin: 8px;
 }
 
 
-button[type="submit"] {
-  font-weight: bold;
-  margin-left: 200px;
-  margin-top: 10px;
-  /* Blue color */
-
-}
-
 mat-dialog-title hr {
   border-top: 1px solid #080808;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 6px;
+  margin-bottom: 2px;
   justify-content: center;
 }
