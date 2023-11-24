@@ -67,13 +67,13 @@ export class KyThiComponent {
     this.loadDL();
   }
 
-  onNamChange() {
-    this.loadDL();
-  }
+  // onNamChange() {
+  //   this.loadDL();
+  // }
 
-  onThangChange() {
-    this.loadDL();
-  }
+  // onThangChange() {
+  //   this.loadDL();
+  // }
 
   loadDL() {
     // Kiểm tra xem có tham số lọc nào được chọn hay không
@@ -95,7 +95,8 @@ export class KyThiComponent {
           this.danhSachKyThi.paginator = this.paginator;
           this.danhSachKyThi.sort = this.sort;
         });
-    } else {
+    }
+    else {
       // Trường hợp 1: Lấy tất cả
       this.kyThiService.layTatCaKyThi().subscribe((data) => {
         this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
@@ -112,6 +113,7 @@ export class KyThiComponent {
       this.danhSachKyThi.paginator.firstPage();
     }
   }
+
   resetFilterValues() {
     this.selectedChungChi = null;
     this.selectedNam = null;

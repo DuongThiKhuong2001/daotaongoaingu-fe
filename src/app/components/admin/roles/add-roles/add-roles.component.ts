@@ -39,8 +39,9 @@ export class AddRolesComponent implements OnInit {
       this.nhanVienService.themVaiTro(formData).subscribe({
         next: (data) => {
           console.log(data);
-          this.closePopup();
+
           this.toastr.success('Thêm vai trò thành công!');
+          this.closePopup();
         },
         error: (err) => {
           this.toastr.error(err);

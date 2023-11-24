@@ -59,7 +59,7 @@ export class AddLecturerComponent implements OnInit {
     diaChi: ['', Validators.required],
     gioiTinh: ['', Validators.required],
     soDienThoai: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-    ngaySinh: [new Date(), Validators.required],
+    ngaySinh: ['', Validators.required],
     quyen: ['GiaoVien'],
     trinhDo: ['', Validators.required],
   });

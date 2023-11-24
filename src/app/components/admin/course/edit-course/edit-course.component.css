@@ -1,20 +1,42 @@
-mat-card {
-  margin: 2%;
-  text-align: left;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.mat-mdc-form-field {
-  width: 98%;
-  margin: 1%;
+/* Style cho tiêu đề */
+
+/* Style cho nội dung dialog */
+div[mat-dialog-content] {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.mat-50 {
-  width: 48%;
-  margin: 1%;
+/* Style cho label */
+label {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
 }
 
-button {
-  margin: 6px;
+/* Style cho input file */
+
+
+/* Style cho mat-form-field */
+mat-form-field {
+  width: 100%;
+
+}
+
+/* Style cho các nút hành động */
+div[mat-dialog-actions] {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
 }
 
 .error {
@@ -26,8 +48,13 @@ button {
 
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 250px;
-  margin-top: 20px;
+  margin-left: 240px;
   /* Blue color */
+}
 
+
+button[color="warn"] {
+  font-weight: bold;
+  margin-right: 220px;
+  /* Orange color */
 }

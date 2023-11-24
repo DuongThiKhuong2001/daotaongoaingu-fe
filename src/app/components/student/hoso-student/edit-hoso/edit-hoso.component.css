@@ -7,11 +7,6 @@ form {
 }
 
 /* Style cho tiêu đề */
-h1 {
-  color: #3f51b5;
-  /* Màu xanh của Material Design */
-  margin-bottom: 20px;
-}
 
 /* Style cho nội dung dialog */
 div[mat-dialog-content] {
@@ -34,7 +29,6 @@ label {
 /* Style cho mat-form-field */
 mat-form-field {
   width: 100%;
-  margin-bottom: 20px;
 }
 
 /* Style cho các nút hành động */
@@ -48,7 +42,7 @@ div[mat-dialog-actions] {
 /* Style cho nút Lưu */
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 200px;
+  margin-left: 240px;
 
   /* Blue color */
 }
@@ -56,6 +50,6 @@ button[type="submit"] {
 
 button[color="warn"] {
   font-weight: bold;
-  margin-right: 200px;
+  margin-right: 220px;
   /* Orange color */
 }

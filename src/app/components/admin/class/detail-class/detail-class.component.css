@@ -6,8 +6,7 @@
 }
 
 .table-container {
-  overflow-y: scroll;
-  /* Thêm thanh cuộn nếu nội dung quá dài */
+  /* overflow-y: scroll; */
   max-height: 350px;
   /* Giới hạn chiều cao tối đa */
   display: flex;
@@ -27,7 +26,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 8px 0;
+  padding: 2px ;
   width: 100%;
   /* Đảm bảo rằng hàng sẽ căn đều theo chiều ngang */
   box-sizing: border-box;
@@ -35,19 +34,16 @@
   border-bottom: 1px solid #ddd;
 }
 
-.table-row:last-child {
-  border-bottom: none;
-  /* Loại bỏ đường viền dưới cùng */
-}
+
 
 /* Định dạng cho tiêu đề cột */
 .table-header {
   flex: 1;
   font-weight: bold;
-  padding: 8px 8px;
+  padding:  6px;
 }
 
 .table-cell {
   flex: 2;
-  padding: 8px 8px;
+  padding: 2px;
 }

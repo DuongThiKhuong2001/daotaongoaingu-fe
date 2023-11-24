@@ -1,5 +1,5 @@
 <form [formGroup]="myform" (ngSubmit)="savetypeclass()">
-  <h1 mat-dialog-title>Thêm mới</h1>
+  <h1 mat-dialog-title>Thêm khóa học</h1>
   <div mat-dialog-content>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Tên khóa học</mat-label>
@@ -22,21 +22,6 @@
        Loại lớp là bắt buộc!
       </mat-error>
     </mat-form-field>
-      <!-- <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Lịch học</mat-label>
-      <mat-select formControlName="maLichHoc">
-        <mat-option
-          *ngFor="let type of ListLichHoc"
-          [value]="type.maLichHoc"
-        >
-          {{ type.moTa }}
-        </mat-option>
-      </mat-select>
-       <mat-error *ngIf="formControls.maLichHoc.errors?.['required']">
-      Lịch học là bắt buộc!
-      </mat-error>
-    </mat-form-field> -->
-
     <mat-form-field>
       <mat-label>Chọn ngày bắt đầu</mat-label>
       <input matInput formControlName="ngayBatDau" [matDatepicker]="startDatePicker" />
@@ -61,6 +46,6 @@
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button type="submit" color="primary">Lưu</button>
-    <button (click)="closePopup()" mat-stroked-button color="warn">Đóng</button>
+    <button (click)="closePopup()" mat-stroked-button color="warn" type="button">Đóng</button>
   </div>
 </form>

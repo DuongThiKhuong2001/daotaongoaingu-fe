@@ -1,5 +1,5 @@
 <form [formGroup]="myform" (ngSubmit)="savetypeclass()">
-  <h1 mat-dialog-title>Thêm mới lớp học</h1>
+  <h1 mat-dialog-title>Thêm lớp học</h1>
   <div mat-dialog-content>
 
     <mat-form-field appearance="outline" class="full-width">
@@ -36,6 +36,6 @@
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button type="submit" color="primary">Lưu</button>
-    <button (click)="closePopup()"  mat-stroked-button  color="warn">Đóng</button>
+    <button (click)="closePopup()"  mat-stroked-button  color="warn" type="button">Đóng</button>
   </div>
 </form>

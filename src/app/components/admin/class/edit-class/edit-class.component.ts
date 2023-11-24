@@ -149,6 +149,7 @@ export class EditClassComponent implements OnInit {
             (response) => {
               console.log(response);
               this.dialogRef.close(true);
+               this.toastr.success('Thành công!');
             },
             (error) => {
               console.error(

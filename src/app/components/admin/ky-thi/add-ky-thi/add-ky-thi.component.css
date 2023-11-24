@@ -7,10 +7,7 @@ form {
 }
 
 /* Style cho tiêu đề */
-h1 {
-  /* Màu xanh của Material Design */
-  margin-bottom: 20px;
-}
+
 
 /* Style cho nội dung dialog */
 div[mat-dialog-content] {
@@ -39,7 +36,6 @@ input[type="file"] {
 /* Style cho mat-form-field */
 mat-form-field {
   width: 100%;
-  margin-bottom: 20px;
 }
 
 /* Style cho các nút hành động */
@@ -47,20 +43,20 @@ div[mat-dialog-actions] {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 20px 20px 20px;
+  padding: 20px;
 }
 
 /* Style cho nút Lưu */
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 200px;
+  margin-left: 240px;
   /* Blue color */
 }
 
 
 button[color="warn"] {
   font-weight: bold;
-  margin-right: 160px;
+  margin-right: 220px;
   /* Orange color */
 }
 

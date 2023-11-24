@@ -55,7 +55,7 @@ export class AddStaffComponent implements OnInit {
     diaChi: ['', Validators.required],
     gioiTinh: ['', Validators.required],
     soDienThoai: [null, [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-    ngaySinh: [new Date(), Validators.required],
+    ngaySinh: ['', Validators.required],
     quyen: ['NhanVien'],
     kinhNghiem: ['', Validators.required],
   });

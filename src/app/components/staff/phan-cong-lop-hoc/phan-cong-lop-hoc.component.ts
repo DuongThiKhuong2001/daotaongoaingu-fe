@@ -71,8 +71,8 @@ export class PhanCongLopHocComponent implements OnInit {
   loadDanhSachDKKhoaHoc(
     page: number = 0,
     size: number = 10,
-    sortBy: string = '',
-    sortDir: string = 'ASC'
+    sortBy: string = 'ngayDangKy',
+    sortDir: string = 'DESC'
   ) {
     this.dangKyKhoaHocService
       .getAllDangKyKhoaHoc(

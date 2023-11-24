@@ -17,7 +17,7 @@ export class AddClassComponent implements OnInit {
   ListKhoaHoc: any[] = [];
   ListPhongHoc: any[] = [];
   ListLichHoc: any[] = [];
-  hinhThucHocs: HinhThucHoc[]=[];
+  hinhThucHocs: HinhThucHoc[] = [];
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { maKhoaHoc: number },
@@ -59,13 +59,21 @@ export class AddClassComponent implements OnInit {
         tenLop: this.formControls.tenLop.value,
         soLuong: this.formControls.soLuong.value,
         maKhoaHoc: this.data.maKhoaHoc,
-        hinhThucHoc:  this.formControls.hinhThucHoc.value
+        hinhThucHoc: this.formControls.hinhThucHoc.value,
       };
+
       this.lopHocService.themLopHoc(body).subscribe({
         next: (data) => {
           console.log(data);
-          this.closePopup();
-          this.toastr.success('Thêm Lớp học thành công!');
+
+          if (data && data.message === 'name-exist') {
+            // Xử lý trường hợp tên lớp học đã tồn tại
+            this.toastr.warning('Tên lớp học đã tồn tại!');
+          } else {
+            // Xử lý trường hợp thêm lớp học thành công
+            this.closePopup();
+            this.toastr.success('Thêm lớp học thành công!');
+          }
         },
         error: (err) => {
           this.toastr.error(err);

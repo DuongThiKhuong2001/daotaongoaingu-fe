@@ -29,7 +29,7 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadLoaiLop();
-    //this.loadLichHoc();
+
   }
 
   closePopup() {
@@ -51,27 +51,7 @@ export class AddCourseComponent implements OnInit {
       this.ListLoaiLop = data;
     });
   }
-  // loadLichHoc() {
-  //   this.lichhocService.getDanhSachLichHoc().subscribe((data) => {
-  //     this.ListLichHoc = data;
-  //   });
-  // }
-  // savetypeclass() {
-  //   if (this.myform.valid) {
-  //     const formData = this.myform.value;
-  //     console.log(formData);
-  //     this.khoahocService.createKhoaHoc(formData).subscribe({
-  //       next: (data) => {
-  //         console.log(data);
-  //         this.closePopup();
-  //         this.toastr.success('Thêm khóa học thành công!');
-  //       },
-  //       error: (err) => {
-  //         this.toastr.error(err);
-  //       },
-  //     });
-  //   }
-  // }
+  
   savetypeclass() {
     if (this.myform.valid) {
       const formData = this.myform.value;

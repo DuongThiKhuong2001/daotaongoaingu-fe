@@ -61,6 +61,7 @@ mat-card-header mat-card-title {
 mat-card .student-info-card {
   border: 1px solid #aeb2b8;
   box-shadow: 0 0 100px rgba(97, 147, 240, 0.878);
+  width: 100%;
 
 }
 

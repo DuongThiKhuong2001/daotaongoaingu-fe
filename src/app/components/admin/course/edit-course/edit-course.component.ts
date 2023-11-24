@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { KhoaHocService } from 'src/app/services/khoa-hoc.service';
 import { LichHocService } from 'src/app/services/lich-hoc.service';
 import { LoaiLopService } from 'src/app/services/loai-lop.service';
@@ -19,6 +20,7 @@ export class EditCourseComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loailopService: LoaiLopService,
     private khoaHocService: KhoaHocService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.editForm = this.formBuilder.group({
@@ -32,7 +34,6 @@ export class EditCourseComponent implements OnInit {
   ngOnInit(): void {
     // Lấy dữ liệu loại lớp và lịch học để hiển thị trong dropdown
     this.loadLoaiLop();
-
   }
 
   loadLoaiLop() {
@@ -55,8 +56,8 @@ export class EditCourseComponent implements OnInit {
         .updateKhoaHoc(this.data.maKhoaHoc, updatedKhoaHoc)
         .subscribe((response) => {
           if (response) {
-            // Cập nhật thành công, đóng dialog và thông báo
             this.dialogRef.close(response);
+            this.toastr.success('Chỉnh sửa thành công!');
           } else {
             // Xử lý lỗi nếu cần
           }
