@@ -1,5 +1,5 @@
 <div class="table-box mat-elevation-z4">
-  <mat-form-field appearance="outline" class="search">
+  <!-- <mat-form-field appearance="outline" class="search">
     <mat-label>Tìm kiếm</mat-label>
     <input
       matInput
@@ -9,7 +9,7 @@
     />
     <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
-  </mat-form-field>
+  </mat-form-field> -->
  <button
     mat-stroked-button
     color="primary"
@@ -33,10 +33,11 @@
 </div>
 
   <mat-table [dataSource]="danhSachTaiLieu" matSort class="mat-elevation-z8">
-    <ng-container matColumnDef="stt">
-      <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
-      <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
-    </ng-container>
+ <ng-container matColumnDef="stt" class="small-stt-column">
+  <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
+  <mat-cell *matCellDef="let i = index" class="small-stt-cell">{{ i + 1 }}</mat-cell>
+</ng-container>
+
 
     <ng-container matColumnDef="fileTaiLieu">
       <mat-header-cell *matHeaderCellDef mat-sort-header

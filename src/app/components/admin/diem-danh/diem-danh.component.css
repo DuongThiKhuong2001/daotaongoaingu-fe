@@ -1,25 +1,68 @@
-mat-card {
-  margin: 2%;
-  text-align: left;
+/* Basic styling for the form container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
 }
 
-.mat-mdc-form-field {
-  width: 98%;
-  margin: 1%;
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+
 }
 
-.mat-50 {
-  width: 48%;
-  margin: 1%;
+/* Style the file input container */
+.file {
+  margin-bottom: 20px;
 }
 
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-weight: normal;
+}
+
+/* Style the dialog actions */
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Style the buttons */
 button {
-  margin: 2px;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.error {
-  padding: 7px;
-  width: 330px;
-  color: red;
-  font-size: 12px;
+/* Adjust button colors for a better visual hierarchy */
+button[color="primary"] {
+  background-color: #564caf;
+  margin-left: 200px;
+
+}
+
+button[color="warn"] {
+  background-color: #f44336;
+
+
 }

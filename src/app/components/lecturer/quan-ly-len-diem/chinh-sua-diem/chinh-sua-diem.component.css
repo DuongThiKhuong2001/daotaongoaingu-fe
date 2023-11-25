@@ -26,8 +26,13 @@ button {
 
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 200px;
-  margin-top: 20px;
+  margin-left: 240px;
   /* Blue color */
+}
 
+
+button[color="warn"] {
+  font-weight: bold;
+  margin-left: 220px;
+  /* Orange color */
 }

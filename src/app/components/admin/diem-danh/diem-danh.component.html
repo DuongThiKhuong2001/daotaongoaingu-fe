@@ -1,18 +1,15 @@
-<form
-  (ngSubmit)="saveDocument()"
-  enctype="multipart/form-data"
->
+<form (ngSubmit)="saveDocument()" enctype="multipart/form-data" class="form-container">
   <h1 mat-dialog-title>Cập nhật file điểm danh</h1>
   <div mat-dialog-content>
 
-    <div clas="file">
-      <label>Chọn file điểm danh</label>
-      <input type="file" (change)="onFileSelect($event)" required />
+    <div class="file">
+      <label for="fileInput">Chọn file điểm danh</label>
+      <input type="file" id="fileInput" (change)="onFileSelect($event)" required />
     </div>
 
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button type="submit" color="primary">Lưu</button>
-    <button (click)="closePopup($event)" mat-raised-button color="warn">Đóng</button>
+    <button  (click)="closePopup($event)" mat-raised-button color="warn">Đóng</button>
   </div>
 </form>

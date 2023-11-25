@@ -194,7 +194,7 @@ const routes: Routes = [
         path: 'dang-ky-khoa-hoc',
         component: RegisterCourseComponent,
         data: {
-          titulo: 'Khóa học',
+          titulo: 'Đăng ký khóa học',
           breadcrumbs: [{ label: 'Các khóa học', url: '/' }],
         },
       },

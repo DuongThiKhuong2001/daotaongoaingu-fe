@@ -1,5 +1,5 @@
 <div class="table-box mat-elevation-z4" >
-  <mat-form-field appearance="outline" class="search">
+  <!-- <mat-form-field appearance="outline" class="search">
     <mat-label>Tìm kiếm</mat-label>
     <input
       matInput
@@ -9,7 +9,7 @@
     />
     <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <div *ngIf="!checkEmtyList">
   <mat-table [dataSource]="danhSachLichThi" matSort class="mat-elevation-z8">

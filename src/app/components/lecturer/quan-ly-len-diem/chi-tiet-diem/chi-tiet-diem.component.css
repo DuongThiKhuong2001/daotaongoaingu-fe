@@ -6,9 +6,8 @@
 }
 
 .table-container {
-  overflow-y: scroll;
   /* Thêm thanh cuộn nếu nội dung quá dài */
-  max-height: 350px;
+  max-height: 400px;
   /* Giới hạn chiều cao tối đa */
   display: flex;
   flex-direction: column;
@@ -27,7 +26,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 8px 0;
+  padding: 4px ;
   width: 100%;
   /* Đảm bảo rằng hàng sẽ căn đều theo chiều ngang */
   box-sizing: border-box;
@@ -49,5 +48,5 @@
 
 .table-cell {
   flex: 2;
-  padding: 8px 8px;
+  padding: 4px ;
 }

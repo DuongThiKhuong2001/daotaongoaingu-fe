@@ -28,8 +28,8 @@
     onSubmit(): void {
       // Kiểm tra xem tiêu đề và nội dung đã được nhập hay chưa
       if (!this.thongBao.tieuDe || !this.thongBao.noiDung) {
-        this.toastr.error(
-          'Vui lòng nhập đầy đủ tiêu đề và nội dung thông báo.'
+        this.toastr.warning(
+          'Vui lòng nhập đầy đủ tiêu đề và nội dung thông báo!'
         );
         return;
       }
