@@ -73,18 +73,25 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: AdminHomeComponent,
-        data: { titulo: 'Trang chủ' },
+        component: RolesComponent,
+        data: { titulo: 'Quản lý vai trò' },
       },
+      // {
+      //   path: 'trang-chu',
+      //   component: AdminHomeComponent,
+      //   data: {
+      //     titulo: 'Trang chủ',
+      //     breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
+      //   },
+      // },
       {
-        path: 'trang-chu',
-        component: AdminHomeComponent,
+        path: 'danh-sach-vai-tro',
+        component: RolesComponent,
         data: {
-          titulo: 'Trang chủ',
-          breadcrumbs: [{ label: 'Trang chủ', url: '/' }],
+          titulo: 'Quản lý vai trò',
+          breadcrumbs: [{ label: 'Vai trò', url: '/' }],
         },
       },
-
       {
         path: 'danh-sach-giao-vien',
         component: ListLecturerComponent,
@@ -132,15 +139,6 @@ const routes: Routes = [
         data: {
           titulo: 'Quản lý phòng học',
           breadcrumbs: [{ label: 'Phòng học', url: '/' }],
-        },
-      },
-
-      {
-        path: 'danh-sach-vai-tro',
-        component: RolesComponent,
-        data: {
-          titulo: 'Quản lý vai trò',
-          breadcrumbs: [{ label: 'Vai trò', url: '/' }],
         },
       },
 

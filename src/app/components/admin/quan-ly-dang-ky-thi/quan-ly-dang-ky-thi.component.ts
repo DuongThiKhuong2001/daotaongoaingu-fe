@@ -19,6 +19,7 @@ export class QuanLyDangKyThiComponent {
   danhSachDKKyThi: MatTableDataSource<DangKyKH> = new MatTableDataSource();
   displayedColumns: string[] = [
     'stt',
+    'hocVien.taiKhoan.tenDangNhap',
     'kyThi',
     'tenHocVien',
     'ngayDangKy',
@@ -65,12 +66,12 @@ export class QuanLyDangKyThiComponent {
 
   onSearch() {
     // Áp dụng bộ lọc tìm kiếm vào danhSachDKKyThi
-    // this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
-      this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
+    this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
+      // this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
 
-      if (this.danhSachDKKyThi.paginator) {
-        this.danhSachDKKyThi.paginator.firstPage();
-      }
+      // if (this.danhSachDKKyThi.paginator) {
+      //   this.danhSachDKKyThi.paginator.firstPage();
+      // }
   }
 
   refresh() {
@@ -80,6 +81,7 @@ export class QuanLyDangKyThiComponent {
     }
     this.loadDanhSachDKKyThi();
   }
+  
   capNhatTrangThai(maDangKy:any){
     const newTrangThai = 'Da_Duyet';
     this.dangKyThiService

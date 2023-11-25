@@ -16,7 +16,14 @@
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
       <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
     </ng-container>
-
+ <ng-container matColumnDef="hocVien.taiKhoan.tenDangNhap">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Mã học viên</mat-header-cell
+      >
+      <mat-cell *matCellDef="let DangKyKH">{{
+        DangKyKH.hocVien.taiKhoan.tenDangNhap
+      }}</mat-cell>
+    </ng-container>
     <ng-container matColumnDef="kyThi">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Kỳ thi</mat-header-cell

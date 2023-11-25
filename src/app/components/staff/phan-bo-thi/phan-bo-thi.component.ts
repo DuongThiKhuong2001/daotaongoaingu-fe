@@ -25,6 +25,7 @@ export class PhanBoThiComponent implements OnInit {
   danhSachDKKyThi: MatTableDataSource<DangKyKH> = new MatTableDataSource();
   displayedColumns: string[] = [
     'stt',
+    'hocVien.taiKhoan.tenDangNhap',
     'kyThi',
     'tenHocVien',
     'trangThai',
