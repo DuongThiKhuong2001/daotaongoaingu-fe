@@ -26,29 +26,13 @@ button {
 
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 250px;
-  margin-top: 20px;
+  margin-left: 240px;
   /* Blue color */
-
 }
 
 
 button[color="warn"] {
-  margin-top: 20px;
-}
-
-/* Đảm bảo rằng form không bị ảnh hưởng khi thu nhỏ màn hình */
-@media screen and (max-width: 768px) {
-
-  .mat-mdc-form-field,
-  .mat-50 {
-    width: 100%;
-    margin: 0;
-  }
-
-  button[type="submit"],
-  button[color="warn"] {
-    margin-left: 0;
-    margin-top: 10px;
-  }
+  font-weight: bold;
+  margin-left: 220px;
+  /* Orange color */
 }

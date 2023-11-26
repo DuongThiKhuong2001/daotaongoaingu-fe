@@ -110,7 +110,7 @@ export class TypeClassComponent implements OnInit {
   }
   tomTat(item: any){
     this.dialog.open(PopupTomTatComponent, {
-      width: '350px',
+      width: '40%',
       data: { item }, // Pass the maLoaiLop value to the dialog
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',

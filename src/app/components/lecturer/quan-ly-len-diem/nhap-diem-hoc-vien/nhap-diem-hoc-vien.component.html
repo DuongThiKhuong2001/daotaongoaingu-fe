@@ -32,7 +32,8 @@
 
   </div>
   <div mat-dialog-actions>
-    <button type="submit" mat-button [disabled]="!myform.valid">Save</button>
-    <button type="button" mat-button (click)="closePopup()">Cancel</button>
+     <button mat-stroked-button color="warn" type="button" (click)="closePopup()">Đóng</button>
+    <button mat-raised-button color="primary" type="submit"  [disabled]="!myform.valid">Lưu</button>
+
   </div>
 </form>

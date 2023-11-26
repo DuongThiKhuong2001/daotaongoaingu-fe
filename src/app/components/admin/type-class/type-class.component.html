@@ -47,12 +47,19 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let LoaiLop">
+          <button
+        mat-icon-button
+        matTooltip="Tóm tắt đề cương"
+        (click)="tomTat(LoaiLop)"
+      >
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
         <button
           mat-icon-button
           matTooltip="Tải đề cương"
           (click)="taiFile(LoaiLop.maLoaiLop)"
         >
-          <mat-icon>picture_as_pdf</mat-icon>
+          <mat-icon>save_alt</mat-icon>
         </button>
         <button *ngIf="user.quyen === 'QuanTriVien'"
           mat-icon-button
@@ -61,13 +68,6 @@
         >
           <mat-icon>edit</mat-icon>
         </button>
-        <button
-        mat-icon-button
-        matTooltip="Tóm tắt đề cương"
-        (click)="tomTat(LoaiLop)"
-      >
-        <mat-icon>info</mat-icon>
-      </button>
         <button *ngIf="user.quyen === 'QuanTriVien'"
           mat-icon-button
           matTooltip="Xóa loại lớp"
