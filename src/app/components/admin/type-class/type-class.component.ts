@@ -12,6 +12,8 @@ import { AddTypeclassComponent } from './add-typeclass/add-typeclass.component';
 import { EditTypeclassComponent } from './edit-typeclass/edit-typeclass.component';
 import { DeleteTypeclassComponent } from './delete-typeclass/delete-typeclass.component';
 import { TaiLieuService } from 'src/app/services/tai-lieu.service';
+import { PopupTomTatComponent } from './popup-tom-tat/popup-tom-tat.component';
+
 
 @Component({
   selector: 'app-type-class',
@@ -29,17 +31,18 @@ export class TypeClassComponent implements OnInit {
   ];
   length: number = 0;
   searchTerm: string = '';
-
+  user: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private loaiLopService: LoaiLopService,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private taiLieuService: TaiLieuService
+    private storageService: StorageService
   ) {}
 
   ngOnInit() {
+    this.user = this.storageService.getUser()
     this.loadDL();
   }
 
@@ -105,7 +108,15 @@ export class TypeClassComponent implements OnInit {
       this.loadDL();
     });
   }
+  tomTat(item: any){
+    this.dialog.open(PopupTomTatComponent, {
+      width: '350px',
+      data: { item }, // Pass the maLoaiLop value to the dialog
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+    });
 
+  }
   taiFile(ma: any) {
     this.loaiLopService.downloadDeCuong(ma).subscribe({
       next: (response) => {

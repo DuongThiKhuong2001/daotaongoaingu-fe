@@ -18,8 +18,16 @@
       <mat-error *ngIf="formControls.hocPhi.errors?.['pattern']">
         Học phí phải là số!
       </mat-error>
-    </mat-form-field>
 
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <textarea placeholder="Tóm tắt đề cương" formControlName="tomTatDeCuong"
+        matInput
+      ></textarea>
+      <mat-error *ngIf="formControls.tomTatDeCuong.errors?.['required']">
+        Học phí phải là số!
+      </mat-error>
+    </mat-form-field>
       <label>Chọn Tài Liệu</label>
       <input type="file" (change)="onFileSelect($event)" required
     />

@@ -31,6 +31,7 @@ export class DanhSachHocVienComponent implements OnInit {
     'taiKhoan.hoTen',
     'taiKhoan.soDienThoai',
     'taiKhoan.gioiTinh',
+    'nhap',
     'edit',
     'xem',
     'actions',

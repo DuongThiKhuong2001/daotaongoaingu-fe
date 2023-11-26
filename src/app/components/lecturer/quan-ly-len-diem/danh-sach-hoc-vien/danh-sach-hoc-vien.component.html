@@ -78,6 +78,17 @@
         {{ item.taiKhoan?.soDienThoai }}
       </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="nhap">
+      <mat-header-cell *matHeaderCellDef>Nhập điểm</mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <mat-icon
+          matTooltip="Chỉnh sửa điểm"
+          *ngIf="trangThai !== 1"
+          (click)="nhapDiem(item)"
+          >edit
+        </mat-icon>
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef>Chỉnh sửa</mat-header-cell>
       <mat-cell *matCellDef="let item">

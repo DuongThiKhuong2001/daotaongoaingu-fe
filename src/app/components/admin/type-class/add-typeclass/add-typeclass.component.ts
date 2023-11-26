@@ -35,15 +35,16 @@ export class AddTypeclassComponent implements OnInit {
       '',
       [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
     ],
+    tomTatDeCuong: ['', [Validators.required]]
   });
 
   savetypeclass() {
   if (this.myform.valid && this.selectedFile) {
     const tenLoaiLop = this.myform.value.tenLoaiLop || ''; // Nếu undefined hoặc null thì gán là chuỗi rỗng
     const hocPhi = Number(this.myform.value.hocPhi) || 0; // Nếu undefined hoặc null thì gán là 0
-
+    const tomTatDeCuong = this.myform.value.tenLoaiLop || '';
     this.loaiLopService
-      .addLoaiLop(this.selectedFile, tenLoaiLop, hocPhi)
+      .addLoaiLop(this.selectedFile, tenLoaiLop, hocPhi, tomTatDeCuong)
       .subscribe({
         next: (data) => {
           this.closePopup();

@@ -89,7 +89,7 @@ export class DsHvComponent implements OnInit {
     const element = document.getElementById('season-tble');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     //gộp ô
-    worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+    worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 7 } }];
     //custom style
     worksheet['A1'] = {
       t: 's',
@@ -97,13 +97,17 @@ export class DsHvComponent implements OnInit {
       s: { alignment: { horizontal: 'center' }, font: { bold: true } },
     };
 
-    for (let col = 0; col <= 3; col++) {
+    for (let col = 0; col <= 7; col++) {
       const cell = XLSX.utils.encode_cell({ r: 1, c: col });
       worksheet[cell].s = { font: { bold: true } };
     }
     const columnWidths = [
       { wch: 5 }, // A
       { wch: 25 }, // B
+      { wch: 25 }, // C
+      { wch: 25 }, // C
+      { wch: 25 }, // C
+      { wch: 25 }, // C
       { wch: 25 }, // C
       { wch: 25 }, // C
     ];

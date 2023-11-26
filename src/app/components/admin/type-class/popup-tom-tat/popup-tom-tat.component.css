@@ -1,0 +1,33 @@
+/* Định dạng tiêu đề */
+mat-dialog-title h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Định dạng đường kẻ dưới tiêu đề */
+mat-dialog-title hr {
+  width: 50%;
+  margin: 10px auto;
+}
+
+/* Định dạng nội dung */
+.detail-faq {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Định dạng các textarea */
+mat-form-field{
+  width: 100%;
+}
+.cau-hoi, .tra-loi{
+  color: black!important;
+  overflow-y: auto;
+}
+
+.tra-loi {
+  min-height: 120px!important;
+  text-align: justify;
+}
+

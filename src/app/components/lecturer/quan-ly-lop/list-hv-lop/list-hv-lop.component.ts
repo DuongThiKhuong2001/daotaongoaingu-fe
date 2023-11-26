@@ -14,6 +14,8 @@ import { LopHocService } from 'src/app/services/lop-hoc.service';
 import { StorageService } from 'src/app/services/storage.service';
 import * as XLSX from 'xlsx';
 import * as XLSXStyle from 'xlsx-js-style';
+import { PhanCongGiangDayService } from './../../../../services/phan-cong-giang-day.service';
+import { PhanCongGiaoVienService } from 'src/app/services/phan-cong-giao-vien.service';
 
 @Component({
   selector: 'app-list-hv-lop',
@@ -39,11 +41,12 @@ export class ListHvLopComponent {
   nameFile = 'Danh sách học viên ';
   dataExel: any;
   lopHocInfo: any;
+  danhSachNgayHoc: any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private dangKyKhoaHocService: DangKyKhoaHocService,
-    private storageService: StorageService,
+    private phanCongGiaoVienService: PhanCongGiaoVienService,
     private toastr: ToastrService,
     private dialog: MatDialog,
     private lopHocService: LopHocService,
@@ -64,6 +67,18 @@ export class ListHvLopComponent {
     this.layLopHoc();
     this.loadDsHocVienDiemDanh(this.maLopHoc);
     this.loadThongTinLopHoc(this.maLopHoc);
+    this.loadNgayHoc()
+  }
+  loadNgayHoc(){
+    this.phanCongGiaoVienService.layNgayHocTheoLop(this.maLopHoc).subscribe({
+      next: data=>{
+        console.log(data)
+        this.danhSachNgayHoc = data
+      },
+      error: err=>{
+        console.log(err)
+      }
+    })
   }
   //lấy thông tin lớp học
   loadThongTinLopHoc(ma: any) {
@@ -82,7 +97,7 @@ export class ListHvLopComponent {
     this.lopHocService.getHocViensDiemDanhhByLopHoc(ma).subscribe({
       next: (data) => {
         this.dataExel = data;
-        console.log(data);
+        console.log(data)
       },
       error: (err) => {},
     });
@@ -92,7 +107,7 @@ export class ListHvLopComponent {
     const element = document.getElementById('season-tble');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     //gộp ô
-    worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+    worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 7 } }];
     //custom style
     worksheet['A1'] = {
       t: 's',
@@ -100,13 +115,17 @@ export class ListHvLopComponent {
       s: { alignment: { horizontal: 'center' }, font: { bold: true } },
     };
 
-    for (let col = 0; col <= 3; col++) {
+    for (let col = 0; col <= 7; col++) {
       const cell = XLSX.utils.encode_cell({ r: 1, c: col });
       worksheet[cell].s = { font: { bold: true } };
     }
     const columnWidths = [
       { wch: 5 }, // A
       { wch: 25 }, // B
+      { wch: 25 }, // C
+      { wch: 25 }, // C
+      { wch: 25 }, // C
+      { wch: 25 }, // C
       { wch: 25 }, // C
       { wch: 25 }, // C
     ];
@@ -124,6 +143,7 @@ export class ListHvLopComponent {
 
     this.lopHocService.getHocViensByLopHoc(this.maLopHoc).subscribe({
       next: (data) => {
+
         this.danhSachHocVien = new MatTableDataSource(data);
         this.danhSachHocVien.paginator = this.paginator;
         this.danhSachHocVien.sort = this.sort;

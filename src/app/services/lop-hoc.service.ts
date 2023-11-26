@@ -169,4 +169,5 @@ export class LopHocService {
   getLopHocForHocVienInKhoaHoc(maKhoaHoc: number): Observable<any> {
     return this.http.get(`${this.apiBaseUrl}/lop-hoc/${maKhoaHoc}`);
   }
+
 }

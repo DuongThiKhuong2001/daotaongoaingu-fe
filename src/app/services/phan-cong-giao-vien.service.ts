@@ -13,7 +13,9 @@ export class PhanCongGiaoVienService {
   themGiaoVienGacThi(request: any): Observable<any> {
     return this.http.post(`${this.API_URL}/them-gac-thi`, request);
   }
-
+  layNgayHocTheoLop(maLopHoc: number): Observable<any> {
+    return this.http.get(`${this.API_URL}/lay-ngay-hoc-theo-lop/${maLopHoc}`);
+  }
   layGiaoVienGacThiTheoLichThi(maLichThi: number): Observable<any> {
     return this.http.get(`${this.API_URL}/lay-gv-gac-thi-theo-lich-thi/${maLichThi}`);
   }

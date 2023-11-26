@@ -5,14 +5,22 @@
       <th>STT</th>
       <th>Họ Tên</th>
       <th>Tài khoản</th>
+      <th>Email</th>
       <th>Số điện thoại</th>
+      <th>Địa chỉ</th>
+      <th>Năm sinh</th>
+      <th>Giới tính</th>
 
     </tr>
     <tr *ngFor="let data of dataExel; let i = index">
       <td>{{ i + 1 }}</td>
       <td>{{ data.hoTen }}</td>
       <td>{{ data.tenDangNhap }}</td>
+      <td>{{ data.email }}</td>
       <td>{{ data.soDienThoai }}</td>
+      <td>{{ data.diaChi }}</td>
+      <td>{{ data.ngaySinh | date : "yyyy"}}</td>
+      <td>{{ data.gioiTinh }}</td>
     </tr>
   </table>
   <mat-form-field appearance="outline" class="search">

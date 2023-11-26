@@ -10,7 +10,7 @@
     <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field>
-  <button
+  <button *ngIf="user.quyen === 'QuanTriVien'"
     mat-stroked-button
     color="primary"
     class="align-right-button"
@@ -54,15 +54,21 @@
         >
           <mat-icon>picture_as_pdf</mat-icon>
         </button>
-        <button
+        <button *ngIf="user.quyen === 'QuanTriVien'"
           mat-icon-button
           matTooltip="Chỉnh sửa loại lớp"
           (click)="editTypeclass(LoaiLop)"
         >
           <mat-icon>edit</mat-icon>
         </button>
-
         <button
+        mat-icon-button
+        matTooltip="Tóm tắt đề cương"
+        (click)="tomTat(LoaiLop)"
+      >
+        <mat-icon>info</mat-icon>
+      </button>
+        <button *ngIf="user.quyen === 'QuanTriVien'"
           mat-icon-button
           matTooltip="Xóa loại lớp"
           (click)="modeleteTypeclass(LoaiLop.maLoaiLop)"

@@ -8,6 +8,11 @@
     <mat-form-field appearance="outline" class="full-width">
       <input matInput placeholder="Học phí" formControlName="hocPhi" required />
     </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <textarea placeholder="Tóm tắt đề cương" formControlName="tomTatDeCuong"
+        matInput
+      ></textarea>
+    </mat-form-field>
     <mat-form-field  >
       <input matInput placeholder="Đề cương"  />
       <input type="file" (change)="onFileSelect($event)" required/>

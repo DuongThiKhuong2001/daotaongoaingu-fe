@@ -187,7 +187,14 @@ const routes: Routes = [
           breadcrumbs: [{ label: 'Thông báo ', url: '/' }],
         },
       },
-
+      {
+        path: 'loai-lop',
+        component: TypeClassComponent,
+        data: {
+          titulo: 'Danh sách loại lớp',
+          breadcrumbs: [{ label: 'Loại lớp', url: '/' }],
+        },
+      },
       {
         path: 'dang-ky-khoa-hoc',
         component: RegisterCourseComponent,

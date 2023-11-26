@@ -1,0 +1,13 @@
+<div class="detail-faq">
+  <h1 mat-dialog-title>
+    Đề cương tóm tắt
+    <hr />
+  </h1>
+  <mat-form-field appearance="outline">
+
+    <textarea disabled="true" matInput class="tra-loi">{{
+      data.item?.tomTatDeCuong
+    }}</textarea>
+  </mat-form-field>
+  <button mat-raised-button color="warn" (click)="closePopup()">Đóng</button>
+</div>

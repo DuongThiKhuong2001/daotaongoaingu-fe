@@ -45,12 +45,12 @@ export class LoaiLopService {
   }
 
   // Gửi POST request để thêm LoaiLop mới
-  addLoaiLop(file: File, tenLoaiLop: string, hocPhi: number): Observable<any> {
+  addLoaiLop(file: File, tenLoaiLop: string, hocPhi: number, tomTatDeCuong: string): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('tenLoaiLop', tenLoaiLop);
     formData.append('hocPhi', hocPhi.toString());
-
+ formData.append('tomTatDeCuong', tomTatDeCuong);
     return this.http.post(`${this.baseUrl}/them`, formData);
   }
 
@@ -59,13 +59,14 @@ export class LoaiLopService {
     maLoaiLop: number,
     file: File,
     tenLoaiLop: string,
-    hocPhi: number
+    hocPhi: number,
+    tomTatDeCuong: string
   ): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('tenLoaiLop', tenLoaiLop);
     formData.append('hocPhi', hocPhi.toString());
-
+    formData.append('tomTatDeCuong', tomTatDeCuong);
     return this.http.put(`${this.baseUrl}/sua/${maLoaiLop}`, formData);
   }
 

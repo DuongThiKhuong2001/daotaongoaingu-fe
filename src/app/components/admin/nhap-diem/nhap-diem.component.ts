@@ -70,19 +70,31 @@ export class NhapDiemComponent implements OnInit {
         .importExcel(this.selectedFile!, this.data.maLichThi)
         .subscribe({
           next: (data) => {
-            if (data.message && data.message === 'saids') {
-              this.toastr.warning('Danh sách nhập điểm không đúng!');
-            } else if(data.message && data.message === 'saima'){
-              this.toastr.warning('Có mã đăng ký không khớp');
-            }
-            else {
-              this.toastr.success('Cập nhật file điểm danh thành công.');
+            console.log(data)
+            if (data.message) {
+              const codiemamIndex = data.message.indexOf('codiemam');
+              if (codiemamIndex !== -1) {
+                  // Lấy phần chuỗi sau 'codiemam'
+                  const additionalInfo = data.message.substring(codiemamIndex + 'codiemam'.length).trim();
+                  this.toastr.warning('Danh sách nhập điểm có điểm âm tại dòng ' + additionalInfo );
+              } else if (data.message.includes('saihv')) {
+                  this.toastr.warning('Danh sách có mã học viên sai!');
+              } else if (data.message.includes('saima')) {
+                const saimaIndex = data.message.indexOf('saima');
+                const additionalInfo = data.message.substring(saimaIndex + 'saima'.length).trim();
+                this.toastr.warning('Có mã đăng ký không khớp tại dòng ' + additionalInfo);
+              }else{
+                this.toastr.success('Cập nhật file điểm danh thành công.');
               this.dialogRef.close('Closed');
-            }
+              }
+              // Bạn có thể thêm các điều kiện kiểm tra khác tại đây nếu cần
+          }
+
 
           },
           error: (fileError) => {
             this.toastr.error('Có lỗi xảy ra khi lưu file.');
+            console.log(fileError)
           },
         });
 

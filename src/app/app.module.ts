@@ -149,6 +149,7 @@ import { DiemDanhComponent } from './components/admin/diem-danh/diem-danh.compon
 import { NhapDiemComponent } from './components/admin/nhap-diem/nhap-diem.component';
 import { ListHvLopComponent } from './components/lecturer/quan-ly-lop/list-hv-lop/list-hv-lop.component';
 import { DsHvComponent } from './components/lecturer/danh-sach-lich-thi/ds-hv/ds-hv.component';
+import { PopupTomTatComponent } from './components/admin/type-class/popup-tom-tat/popup-tom-tat.component';
 
 
 
@@ -295,8 +296,8 @@ import { DsHvComponent } from './components/lecturer/danh-sach-lich-thi/ds-hv/ds
     DiemDanhComponent,
     NhapDiemComponent,
     ListHvLopComponent,
-    DsHvComponent
-
+    DsHvComponent,
+    PopupTomTatComponent
   ],
   imports: [
     BrowserModule,

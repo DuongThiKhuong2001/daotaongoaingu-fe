@@ -23,6 +23,7 @@ export class EditTypeclassComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       tenLoaiLop: ['', Validators.required],
       hocPhi: ['', Validators.required],
+      tomTatDeCuong: ['', Validators.required],
     });
   }
 
@@ -31,6 +32,7 @@ export class EditTypeclassComponent implements OnInit {
     this.editForm.setValue({
       tenLoaiLop: this.data.tenLoaiLop,
       hocPhi: this.data.hocPhi,
+      tomTatDeCuong: this.data.tomTatDeCuong
     });
   }
 
@@ -40,10 +42,10 @@ export class EditTypeclassComponent implements OnInit {
 
   onSubmit(): void {
     if (this.editForm.valid && this.selectedFile) {
-      const { tenLoaiLop, hocPhi } = this.editForm.value;
+      const { tenLoaiLop, hocPhi, tomTatDeCuong } = this.editForm.value;
 
       this.loaiLopService
-        .suaLoaiLop(this.data.maLoaiLop, this.selectedFile, tenLoaiLop, hocPhi)
+        .suaLoaiLop(this.data.maLoaiLop, this.selectedFile, tenLoaiLop, hocPhi, tomTatDeCuong)
         .subscribe({
           next: (response) => {
             console.log(response); // Process the response here (maybe update UI or show a message to the user)

@@ -12,6 +12,7 @@
   })
   export class GuiThongBaoComponent implements OnInit {
     thongBao = { tieuDe: '', noiDung: '' };
+    isLoading = false;
 
     constructor(
       @Inject(MAT_DIALOG_DATA) public data: { lopHoc: LopHoc },
@@ -28,23 +29,27 @@
     onSubmit(): void {
       // Kiểm tra xem tiêu đề và nội dung đã được nhập hay chưa
       if (!this.thongBao.tieuDe || !this.thongBao.noiDung) {
-        this.toastr.warning(
-          'Vui lòng nhập đầy đủ tiêu đề và nội dung thông báo!'
-        );
+        this.toastr.warning('Vui lòng nhập đầy đủ tiêu đề và nội dung thông báo!');
         return;
       }
 
-      this.lopHocService
-        .guiThongBao(this.data.lopHoc.maLop, this.thongBao)
-        .subscribe({
-          next: (data) => {
-            this.toastr.success('Gửi thông báo thành công!');
-            this.closePopup();
-          },
-          error: (err) => {
-            console.log('Lỗi:', err);
-            this.toastr.error('Có lỗi xảy ra khi gửi thông báo.');
-          },
-        });
+      // Đặt isLoading thành true
+      this.isLoading = true;
+
+      this.lopHocService.guiThongBao(this.data.lopHoc.maLop, this.thongBao).subscribe({
+        next: (data) => {
+          this.toastr.success('Gửi thông báo thành công!');
+          this.closePopup();
+        },
+        error: (err) => {
+          console.log('Lỗi:', err);
+          this.toastr.error('Có lỗi xảy ra khi gửi thông báo.');
+        },
+        complete: () => {
+          // Sau khi hoàn thành yêu cầu, đặt isLoading thành false
+          this.isLoading = false;
+        },
+      });
     }
+
   }
