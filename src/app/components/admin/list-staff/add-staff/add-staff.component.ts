@@ -41,7 +41,7 @@ export class AddStaffComponent implements OnInit {
       '',
       [
         Validators.required,
-        Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d).{6,10}$/),
+        Validators.pattern(/^(?=.*[a-zA-Z])(?=.*\d).{6,20}$/),
       ],
     ],
     matKhau: [

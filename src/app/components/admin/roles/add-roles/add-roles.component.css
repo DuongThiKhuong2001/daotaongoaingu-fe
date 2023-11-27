@@ -52,14 +52,14 @@ div[mat-dialog-actions] {
 
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 240px;
+  margin-left: 220px;
   /* Blue color */
 }
 
 
 button[color="warn"] {
   font-weight: bold;
-  margin-right: 220px;
+  margin-right: 200px;
   /* Orange color */
 }
 

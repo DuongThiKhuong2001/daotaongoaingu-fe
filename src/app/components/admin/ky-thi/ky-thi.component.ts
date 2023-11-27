@@ -159,7 +159,7 @@ export class KyThiComponent {
   }
   xoaKyThi(maKyThi: any) {
     const dialogRef = this.dialog.open(DeleteComponent, {
-      width: '45%',
+      width: '40%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

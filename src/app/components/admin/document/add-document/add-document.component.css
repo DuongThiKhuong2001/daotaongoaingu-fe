@@ -48,13 +48,13 @@ div[mat-dialog-actions] {
 /* Style cho nút Lưu */
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 240px;
+  margin-left: 220px;
   /* Blue color */
 }
 
 
 button[color="warn"] {
   font-weight: bold;
-  margin-right: 220px;
+  margin-right: 180px;
   /* Orange color */
 }

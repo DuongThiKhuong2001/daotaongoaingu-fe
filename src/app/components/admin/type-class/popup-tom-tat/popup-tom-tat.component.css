@@ -6,13 +6,13 @@ mat-dialog-title h1 {
 
 /* Định dạng đường kẻ dưới tiêu đề */
 mat-dialog-title hr {
-  width: 50%;
-  margin: 10px auto;
+  width: 10%;
+  margin: 2px auto;
 }
 
 /* Định dạng nội dung */
 .detail-faq {
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

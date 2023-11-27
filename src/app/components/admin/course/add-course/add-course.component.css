@@ -28,7 +28,7 @@ label {
 input[type="file"] {
   border: 1px solid #ccc;
   padding: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -36,7 +36,7 @@ input[type="file"] {
 /* Style cho mat-form-field */
 mat-form-field {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
 /* Style cho các nút hành động */
@@ -50,13 +50,13 @@ div[mat-dialog-actions] {
 /* Style cho nút Lưu */
 button[type="submit"] {
   font-weight: bold;
-  margin-left: 240px;
+  margin-left: 220px;
   /* Blue color */
 }
 
 
 button[color="warn"] {
   font-weight: bold;
-  margin-right: 220px;
+  margin-right: 180px;
   /* Orange color */
 }
