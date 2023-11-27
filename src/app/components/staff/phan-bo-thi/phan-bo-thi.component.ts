@@ -22,7 +22,7 @@ import { ChiTietLichThiComponent } from './chi-tiet-lich-thi/chi-tiet-lich-thi.c
   styleUrls: ['./phan-bo-thi.component.css'],
 })
 export class PhanBoThiComponent implements OnInit {
-  danhSachDKKyThi: MatTableDataSource<DangKyKH> = new MatTableDataSource();
+  danhSachDKKyThi: MatTableDataSource<any> = new MatTableDataSource();
   displayedColumns: string[] = [
     'stt',
     'hocVien.taiKhoan.tenDangNhap',
@@ -60,7 +60,7 @@ export class PhanBoThiComponent implements OnInit {
   loadDanhSachDKKyThi() {
     this.dangKyThiService.layTheoKyThiConHan().subscribe({
       next: (data) => {
-        // Gán dữ liệu vào danhSachDKKyThi
+        console.log(data);
         this.danhSachDKKyThi.data = data;
         // Sử dụng paginator để thiết lập tổng số trang
         this.paginator.length = data.length;
@@ -72,16 +72,37 @@ export class PhanBoThiComponent implements OnInit {
   }
 
   onSearch() {
-    // Áp dụng bộ lọc tìm kiếm vào danhSachDKKyThi
+    // Custom filter function
+    const filterFunction = (data: any, filter: string): boolean => {
+      const searchTerms = filter.toLowerCase().split(' ');
+
+      // Check for a match in the specified properties
+      return (
+        data.hocVien?.taiKhoan?.tenDangNhap
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false ||
+        data.hocVien?.taiKhoan?.hoTen
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false ||
+        data.kyThi?.chungChi?.tenChungChi
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false
+      );
+    };
+
+    // Apply the filter to the MatTableDataSource
+    this.danhSachDKKyThi.filterPredicate = filterFunction;
     this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
   }
 
   refresh() {
-    this.searchTerm = '';
-    if (this.paginator) {
-      this.paginator.firstPage();
-    }
-    this.loadDanhSachDKKyThi();
+    this.searchTerm = ''; // Đặt lại giá trị của bộ lọc tìm kiếm về rỗng
+    this.danhSachDKKyThi.filter = ''; // Xóa bộ lọc trong MatTableDataSource
+    this.paginator.pageIndex = 0; // Đặt lại trang về trang đầu tiên
+    this.paginator.pageSize = 5; // Đặt lại kích thước trang về giá trị mặc định nếu cần
   }
   chonLich(item: any, trangThai: number) {
     this.router.navigate([

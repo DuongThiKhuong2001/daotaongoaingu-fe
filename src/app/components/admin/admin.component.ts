@@ -25,7 +25,7 @@ export class AdminComponent {
     const user = this.storageService.getUser();
     this.roles = user.quyen;
    if (!this.isLoggedIn) {
-     this.router.navigate(['/dang-nhap']);
+     this.router.navigate(['/trang-chu']);
    } else if (this.roles !== 'QuanTriVien')
    {
      this.router.navigate(['/403']);

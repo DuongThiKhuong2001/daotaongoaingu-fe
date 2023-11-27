@@ -38,6 +38,7 @@ export class ListHocVienComponent {
   nameFile = 'Danh sách học viên ';
   dataExel: any;
   lopHocInfo: any;
+  danhSachNgayHoc: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -61,27 +62,26 @@ export class ListHocVienComponent {
     ); // Lấy maLopHoc từ URL
     this.loadDanhSachHocVienCuaLopHoc();
     this.layLopHoc();
-    this.loadDsHocVienDiemDanh(this.maLopHoc)
-    this.loadThongTinLopHoc(this.maLopHoc)
+    this.loadDsHocVienDiemDanh(this.maLopHoc);
+    this.loadThongTinLopHoc(this.maLopHoc);
   }
   //lấy thông tin lớp học
-  loadThongTinLopHoc(ma:any) {
+  loadThongTinLopHoc(ma: any) {
     this.lopHocService.layLopHoc(ma).subscribe({
-      next: data => {
-        this.lopHocInfo = data
-         this.nameFile = `Danh sách học viên lớp ${this.lopHocInfo.tenLop} `;
-      }
-      ,
-      error: err => {
-        console.log(err)
-      }
-    })
+      next: (data) => {
+        this.lopHocInfo = data;
+        this.nameFile = `Danh sách học viên lớp ${this.lopHocInfo.tenLop} `;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
   //lấy danh sách xuất excel
   loadDsHocVienDiemDanh(ma: any) {
     this.lopHocService.getHocViensDiemDanhhByLopHoc(ma).subscribe({
       next: (data) => {
-        this.dataExel = data
+        this.dataExel = data;
         console.log(data);
       },
       error: (err) => {},
@@ -92,7 +92,7 @@ export class ListHocVienComponent {
     const element = document.getElementById('season-tble');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     //gộp ô
-    worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+    worksheet['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 7 } }];
     //custom style
     worksheet['A1'] = {
       t: 's',
@@ -100,13 +100,17 @@ export class ListHocVienComponent {
       s: { alignment: { horizontal: 'center' }, font: { bold: true } },
     };
 
-    for (let col = 0; col <= 3; col++) {
+    for (let col = 0; col <= 7; col++) {
       const cell = XLSX.utils.encode_cell({ r: 1, c: col });
       worksheet[cell].s = { font: { bold: true } };
     }
     const columnWidths = [
       { wch: 5 }, // A
       { wch: 25 }, // B
+      { wch: 25 }, // C
+      { wch: 25 }, // C
+      { wch: 25 }, // C
+      { wch: 25 }, // C
       { wch: 25 }, // C
       { wch: 25 }, // C
     ];

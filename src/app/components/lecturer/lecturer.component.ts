@@ -16,9 +16,10 @@ export class LecturerComponent {
     this.isLoggedIn = this.storageService.isLoggedIn();
     const user = this.storageService.getUser();
     this.roles = user.quyen;
-    if (!this.isLoggedIn || this.roles !== 'GiaoVien') {
-      //console.log(user)
-       this.router.navigate(['/403']);
+    if (!this.isLoggedIn) {
+      this.router.navigate(['/trang-chu']);
+    } else if (this.roles !== 'GiaoVien') {
+      this.router.navigate(['/403']);
     }
   }
 }

@@ -38,10 +38,10 @@ export class AddDocumentComponent implements OnInit {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
 
-    const maxFileSize = 5 * 1024 * 1024; // 5 MB in bytes
+    const maxFileSize = 2 * 1024 * 1024; // 5 MB in bytes
 
     if (file.size > maxFileSize) {
-      this.toastr.warning('Kích thước file quá lớn. Vui lòng chọn file nhỏ hơn 5MB.');
+      this.toastr.warning('Kích thước file quá lớn. Vui lòng chọn file nhỏ hơn 2MB.');
       this.selectedFile = null;
       return;
     }

@@ -93,7 +93,7 @@ export class NhapDiemComponent implements OnInit {
 
           },
           error: (fileError) => {
-            this.toastr.error('Có lỗi xảy ra khi lưu file.');
+            this.toastr.error('Có lỗi xảy ra khi lưu file!');
             console.log(fileError)
           },
         });

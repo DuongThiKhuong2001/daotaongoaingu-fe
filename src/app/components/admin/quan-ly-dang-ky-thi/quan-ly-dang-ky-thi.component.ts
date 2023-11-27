@@ -65,24 +65,40 @@ export class QuanLyDangKyThiComponent {
   }
 
   onSearch() {
-    // Áp dụng bộ lọc tìm kiếm vào danhSachDKKyThi
-    this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
-      // this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
+    // Custom filter function
+    const filterFunction = (data: any, filter: string): boolean => {
+      const searchTerms = filter.toLowerCase().split(' ');
 
-      // if (this.danhSachDKKyThi.paginator) {
-      //   this.danhSachDKKyThi.paginator.firstPage();
-      // }
+      // Check for a match in the specified properties
+      return (
+        data.hocVien?.taiKhoan?.tenDangNhap
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false ||
+        data.hocVien?.taiKhoan?.tenDayDu
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false ||
+        data.kyThi?.chungChi?.tenChungChi
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false
+      );
+    };
+
+    // Apply the filter to the MatTableDataSource
+    this.danhSachDKKyThi.filterPredicate = filterFunction;
+    this.danhSachDKKyThi.filter = this.searchTerm.trim().toLowerCase();
   }
 
   refresh() {
-    this.searchTerm = '';
-    if (this.paginator) {
-      this.paginator.firstPage();
-    }
-    this.loadDanhSachDKKyThi();
+    this.searchTerm = ''; // Đặt lại giá trị của bộ lọc tìm kiếm về rỗng
+    this.danhSachDKKyThi.filter = ''; // Xóa bộ lọc trong MatTableDataSource
+    this.paginator.pageIndex = 0; // Đặt lại trang về trang đầu tiên
+    this.paginator.pageSize = 5; // Đặt lại kích thước trang về giá trị mặc định nếu cần
   }
-  
-  capNhatTrangThai(maDangKy:any){
+
+  capNhatTrangThai(maDangKy: any) {
     const newTrangThai = 'Da_Duyet';
     this.dangKyThiService
       .capNhatDangKyThi(maDangKy, {

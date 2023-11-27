@@ -16,7 +16,7 @@
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
       <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
     </ng-container>
- <ng-container matColumnDef="hocVien.taiKhoan.tenDangNhap">
+    <ng-container matColumnDef="hocVien.taiKhoan.tenDangNhap">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Mã học viên</mat-header-cell
       >
@@ -28,9 +28,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Kỳ thi</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">{{
-        item.kyThi.chungChi.tenChungChi
-      }} tháng {{item.kyThi.thangThi}} năm {{item.kyThi.namThi}} </mat-cell>
+      <mat-cell *matCellDef="let item"
+        >{{ item.kyThi.chungChi.tenChungChi }} tháng
+        {{ item.kyThi.thangThi }} năm {{ item.kyThi.namThi }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tenHocVien">
@@ -46,25 +47,30 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Ngày đăng ký</mat-header-cell
       >
-      <mat-cell *matCellDef="let DangKyKH">{{
-        DangKyKH.ngayDangKy | date : "dd/MM/yyyy"
-      }} </mat-cell>
+      <mat-cell *matCellDef="let DangKyKH"
+        >{{ DangKyKH.ngayDangKy | date : "dd/MM/yyyy" }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyKH">
         <button
-        mat-stroked-button
-        [disabled]="DangKyKH.trangThaiDangKyThi==='Da_Duyet' ||
-         DangKyKH.trangThaiDangKyThi==='Da_Sap_Lich' || DangKyKH.trangThaiDangKyThi==='Da_Len_Diem'"
-        [color]="
-          DangKyKH.trangThaiDangKyThi === 'Chua_Duyet' ? 'warn' : 'primary'
-        "
-        (click)="capNhatTrangThai(DangKyKH.maDangKyThi)"
-      >
-        {{ DangKyKH.trangThaiDangKyThi === "Chua_Duyet" ? "Duyệt" : "Đã duyệt" }}
-      </button>
+          mat-stroked-button
+          [disabled]="
+            DangKyKH.trangThaiDangKyThi === 'Da_Duyet' ||
+            DangKyKH.trangThaiDangKyThi === 'Da_Sap_Lich' ||
+            DangKyKH.trangThaiDangKyThi === 'Da_Len_Diem'
+          "
+          [color]="
+            DangKyKH.trangThaiDangKyThi === 'Chua_Duyet' ? 'warn' : 'primary'
+          "
+          (click)="capNhatTrangThai(DangKyKH.maDangKyThi)"
+        >
+          {{
+            DangKyKH.trangThaiDangKyThi === "Chua_Duyet" ? "Duyệt" : "Đã duyệt"
+          }}
+        </button>
       </mat-cell>
     </ng-container>
 
@@ -77,5 +83,4 @@
     showFirstLastButtons
   >
   </mat-paginator>
-
 </div>

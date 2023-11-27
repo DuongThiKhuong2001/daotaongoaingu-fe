@@ -1,20 +1,31 @@
 <div class="table-box mat-elevation-z4">
-  <table id="season-tble" class="" hidden>
+   <table id="season-tble" class="" hidden>
     <tr></tr>
     <tr>
       <th>STT</th>
       <th>Họ Tên</th>
       <th>Tài khoản</th>
+      <th>Email</th>
       <th>Số điện thoại</th>
+      <th>Địa chỉ</th>
+      <th>Năm sinh</th>
+      <th>Giới tính</th>
+      <th *ngFor="let ngay of danhSachNgayHoc">{{ ngay.ngay | date: "dd/MM/yyyy" }}</th>
     </tr>
+
     <tr *ngFor="let data of dataExel; let i = index">
       <td>{{ i + 1 }}</td>
       <td>{{ data.hoTen }}</td>
       <td>{{ data.tenDangNhap }}</td>
+      <td>{{ data.email }}</td>
       <td>{{ data.soDienThoai }}</td>
+      <td>{{ data.diaChi }}</td>
+      <td>{{ data.ngaySinh | date : "yyyy"}}</td>
+      <td>{{ data.gioiTinh }}</td>
+      <td></td>
     </tr>
+
   </table>
-  
   <mat-form-field appearance="outline" class="search">
     <mat-label>Tìm kiếm</mat-label>
     <input
