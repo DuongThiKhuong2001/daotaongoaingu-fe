@@ -7,7 +7,11 @@ mat-card {
   width: 98%;
   margin: 1%;
 }
-
+div[mat-dialog-content] {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
 .mat-50 {
   width: 48%;
   margin: 1%;
