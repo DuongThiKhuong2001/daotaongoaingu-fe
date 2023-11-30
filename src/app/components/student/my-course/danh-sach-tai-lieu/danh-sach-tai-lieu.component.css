@@ -8,8 +8,11 @@
   align-items: center;
   margin: 40px;
 
-}
 
+}
+mat-table{
+margin-top: 20px;
+}
 /* Định dạng ô tìm kiếm */
 /* Định dạng ô tìm kiếm */
 .mat-form-field.search {
@@ -90,9 +93,8 @@ mat-paginator {
 }
 
 .back-icon {
-  float: right;
   justify-content: flex-end;
   margin-left: auto;
-  margin-bottom: 20px;
+
 
 }

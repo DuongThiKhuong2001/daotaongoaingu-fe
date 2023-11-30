@@ -1,15 +1,7 @@
+
+
 <div class="table-box mat-elevation-z4">
-  <mat-form-field appearance="outline" class="search">
-    <mat-label>Tìm kiếm</mat-label>
-    <input
-      matInput
-      placeholder="Nhập nội dung tìm kiếm..."
-      [(ngModel)]="searchTerm"
-      class="example-full-width"
-    />
-    <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
-    <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
-  </mat-form-field>
+
   <mat-icon matTooltip="Quay lại" (click)="return()" class="back-icon"
     >arrow_back</mat-icon
   >
@@ -26,7 +18,7 @@
       >
       <mat-cell *matCellDef="let item">{{ item.fileTaiLieu }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="loaiLop">
+    <ng-container matColumnDef="loaiLop.tenLoaiLop">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Loại lớp</mat-header-cell
       >

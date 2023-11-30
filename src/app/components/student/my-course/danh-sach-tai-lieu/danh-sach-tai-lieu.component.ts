@@ -19,7 +19,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DanhSachTaiLieuComponent {
   danhSachTaiLieu: MatTableDataSource<TaiLieu> = new MatTableDataSource();
-  displayedColumns: string[] = ['stt', 'fileTaiLieu', 'loaiLop', 'actions'];
+  displayedColumns: string[] = [
+    'stt',
+    'loaiLop.tenLoaiLop',
+    'fileTaiLieu',
+    'actions',
+  ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   searchTerm: string = '';

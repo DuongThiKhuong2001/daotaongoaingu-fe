@@ -1,17 +1,6 @@
-  <div class="table-box mat-elevation-z4">
-    <div class="form-fields">
-    <mat-form-field appearance="outline" class="search">
-      <mat-label>Tìm kiếm</mat-label>
-      <input
-        matInput
-        placeholder="Nhập nội dung tìm kiếm..."
-        [(ngModel)]="searchTerm"
-        class="example-full-width"
-      />
-      <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
-      <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
-    </mat-form-field>
-
+<div class="table-box mat-elevation-z4">
+  <div class="form-fields">
+    <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
     <button
       mat-stroked-button
       color="primary"
@@ -22,15 +11,21 @@
     </button>
 
     <div class="filter">
-    <mat-form-field appearance="outline" >
-      <mat-label>Chọn chứng chỉ</mat-label>
-      <mat-select [(ngModel)]="selectedChungChi" (ngModelChange)="onChungChiChange()">
-        <mat-option *ngFor="let chungChi of chungChis" [value]="chungChi.maChungChi">
-          {{ chungChi.tenChungChi }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Chọn chứng chỉ</mat-label>
+        <mat-select
+          [(ngModel)]="selectedChungChi"
+          (ngModelChange)="onChungChiChange()"
+        >
+          <mat-option
+            *ngFor="let chungChi of chungChis"
+            [value]="chungChi.maChungChi"
+          >
+            {{ chungChi.tenChungChi }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <!-- <mat-form-field appearance="outline" class="search">
       <mat-label>Chọn năm</mat-label>
       <mat-select [(ngModel)]="selectedNam" (ngModelChange)="onNamChange()">
@@ -49,7 +44,6 @@
       </mat-select>
     </mat-form-field> -->
 
-
     <mat-table [dataSource]="danhSachKyThi" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="stt">
         <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
@@ -59,9 +53,11 @@
       <ng-container matColumnDef="thangThi">
         <mat-header-cell *matHeaderCellDef mat-sort-header
           >Tên kỳ thi
-          </mat-header-cell
+        </mat-header-cell>
+        <mat-cell *matCellDef="let item"
+          >{{ item.chungChi.tenChungChi }} tháng {{ item.thangThi }} năm
+          {{ item.namThi }}</mat-cell
         >
-        <mat-cell *matCellDef="let item">{{ item.chungChi.tenChungChi }} tháng {{item.thangThi }} năm {{ item.namThi }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="namThi">
@@ -69,32 +65,45 @@
           >Thời gian</mat-header-cell
         >
         <mat-cell *matCellDef="let item">
-          {{item.thangThi }}/{{ item.namThi }}
+          {{ item.thangThi }}/{{ item.namThi }}
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="lichThi">
-        <mat-header-cell *matHeaderCellDef
-          ></mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let item">
-          <mat-icon matTooltip="Danh sách lịch thi"(click)="navigateToDanhSachLichThi(item.maKyThi)">list_alt</mat-icon>
+          <mat-icon
+            matTooltip="Danh sách lịch thi"
+            (click)="navigateToDanhSachLichThi(item.maKyThi)"
+            >list_alt</mat-icon
+          >
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="giaoVienRaDe">
-        <mat-header-cell *matHeaderCellDef
-          ></mat-header-cell
-        >
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let item">
-          <mat-icon matTooltip="Phân công ra đề"(click)="navigateToDanhSachGiaoVienRaDe(item.maKyThi)">person</mat-icon>
+          <mat-icon
+            matTooltip="Phân công ra đề"
+            (click)="navigateToDanhSachGiaoVienRaDe(item.maKyThi)"
+            >person</mat-icon
+          >
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let item">
-            <mat-icon matTooltip="Chỉnh sửa kỳ thi"  (click)="editKyThi(item)">edit</mat-icon>
-            <mat-icon matTooltip="Xem chi tiết"  (click)="detailKyThi(item)">info</mat-icon>
+          <mat-icon matTooltip="Chỉnh sửa kỳ thi" (click)="editKyThi(item)"
+            >edit</mat-icon
+          >
+          <mat-icon matTooltip="Xem chi tiết" (click)="detailKyThi(item)"
+            >info</mat-icon
+          >
 
-            <mat-icon matTooltip="Xóa kỳ thi" class="delete"(click)="xoaKyThi(item.maKyThi)">delete</mat-icon>
+          <mat-icon
+            matTooltip="Xóa kỳ thi"
+            class="delete"
+            (click)="xoaKyThi(item.maKyThi)"
+            >delete</mat-icon
+          >
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -110,3 +119,4 @@
     >
     </mat-paginator>
   </div>
+</div>

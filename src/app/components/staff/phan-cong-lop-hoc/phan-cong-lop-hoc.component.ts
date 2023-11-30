@@ -93,6 +93,26 @@ export class PhanCongLopHocComponent implements OnInit {
   }
 
   onSearch() {
+    const filterFunction = (data: any, filter: string): boolean => {
+      const searchTerms = filter.toLowerCase().split(' ');
+
+      // Check for a match in the specified properties
+      return (
+        data.hocVien?.taiKhoan?.tenDangNhap
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false ||
+        data.hocVien?.taiKhoan?.hoTen?.toLowerCase().includes(searchTerms[0]) ||
+        false ||
+        data.kyThi?.chungChi?.tenChungChi
+          ?.toLowerCase()
+          .includes(searchTerms[0]) ||
+        false
+      );
+    };
+
+    this.danhSachDKKhoaHoc.filterPredicate = filterFunction;
+    this.danhSachDKKhoaHoc.filter = this.searchTerm.trim().toLowerCase();
     this.loadDanhSachDKKhoaHoc();
   }
 

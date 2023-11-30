@@ -26,8 +26,8 @@ export class PhanBoThiComponent implements OnInit {
   displayedColumns: string[] = [
     'stt',
     'hocVien.taiKhoan.tenDangNhap',
-    'kyThi',
     'tenHocVien',
+    'kyThi',
     'trangThai',
     'ngayDangKy',
     'detail',
@@ -82,9 +82,7 @@ export class PhanBoThiComponent implements OnInit {
           ?.toLowerCase()
           .includes(searchTerms[0]) ||
         false ||
-        data.hocVien?.taiKhoan?.hoTen
-          ?.toLowerCase()
-          .includes(searchTerms[0]) ||
+        data.hocVien?.taiKhoan?.hoTen?.toLowerCase().includes(searchTerms[0]) ||
         false ||
         data.kyThi?.chungChi?.tenChungChi
           ?.toLowerCase()

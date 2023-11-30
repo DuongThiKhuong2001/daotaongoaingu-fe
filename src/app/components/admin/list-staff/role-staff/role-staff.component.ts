@@ -96,7 +96,7 @@ export class RoleStaffComponent implements OnInit {
           this.dialogRef.close();
         },
         error: (err) => {
-          this.toastr.error(err);
+          this.toastr.error('Cảnh báo lỗi!');
         },
       });
   }
