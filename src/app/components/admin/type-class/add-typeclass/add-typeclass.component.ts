@@ -73,7 +73,7 @@ export class AddTypeclassComponent implements OnInit {
 
     if (file.size > maxFileSize) {
       this.toastr.warning(
-        'Kích thước file quá lớn. Vui lòng chọn file nhỏ hơn 5MB.'
+        'Kích thước file quá lớn. Vui lòng chọn file nhỏ hơn 2MB!'
       );
       this.selectedFile = null;
       return;

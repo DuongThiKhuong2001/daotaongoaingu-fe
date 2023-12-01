@@ -73,8 +73,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: RolesComponent,
-        data: { titulo: 'Quản lý vai trò' },
+        component: TypeClassComponent,
+        data: { titulo: 'Quản lý loại lớp' },
       },
       // {
       //   path: 'trang-chu',

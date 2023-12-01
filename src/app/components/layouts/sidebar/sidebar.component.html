@@ -14,45 +14,6 @@
         <mat-icon>home</mat-icon> <span>Trang chủ</span>
       </a>
     </mat-list-item> -->
-     <mat-list-item>
-      <a
-        routerLink="/quan-tri-vien/danh-sach-vai-tro"
-        routerLinkActive="active-link"
-      >
-        <mat-icon>assignment add</mat-icon> <span>Quản lý vai trò</span>
-      </a>
-    </mat-list-item>
-    <mat-list-item>
-      <a (click)="toggleMenu()" routerLinkActive="active-link">
-        <mat-icon>person_add </mat-icon> <span> Quản lý Tài khoản</span>
-        <mat-icon *ngIf="!showMenu">chevron_right</mat-icon>
-        <mat-icon *ngIf="showMenu">expand_more</mat-icon>
-      </a>
-    </mat-list-item>
-    <mat-nav-list class="sidenav-submenu" *ngIf="showMenu">
-      <a
-        mat-list-item
-        routerLink="/quan-tri-vien/danh-sach-giao-vien"
-        routerLinkActive="active-link"
-      >
-        <span>Giáo viên</span>
-      </a>
-      <a
-        mat-list-item
-        routerLink="/quan-tri-vien/danh-sach-nhan-vien"
-        routerLinkActive="active-link"
-      >
-        <span>Nhân viên</span>
-      </a>
-      <a
-        mat-list-item
-        routerLink="/quan-tri-vien/danh-sach-hoc-vien"
-        routerLinkActive="active-link"
-      >
-        <span>Học viên</span>
-      </a>
-    </mat-nav-list>
-
     <mat-list-item>
       <a routerLink="/quan-tri-vien/loai-lop" routerLinkActive="active-link">
         <mat-icon>local_library</mat-icon> <span>Quản lý loại lớp</span>
@@ -88,6 +49,45 @@
         <mat-icon>text_format</mat-icon> <span>Quản lý bậc chứng chỉ</span>
       </a>
     </mat-list-item>
+    <mat-list-item>
+      <a
+        routerLink="/quan-tri-vien/danh-sach-vai-tro"
+        routerLinkActive="active-link"
+      >
+        <mat-icon>assignment add</mat-icon> <span>Quản lý vai trò</span>
+      </a>
+    </mat-list-item>
+     <mat-list-item>
+      <a (click)="toggleMenu()" routerLinkActive="active-link">
+        <mat-icon>person_add </mat-icon> <span> Quản lý Tài khoản</span>
+        <mat-icon *ngIf="!showMenu">chevron_right</mat-icon>
+        <mat-icon *ngIf="showMenu">expand_more</mat-icon>
+      </a>
+    </mat-list-item>
+    <mat-nav-list class="sidenav-submenu" *ngIf="showMenu">
+      <a
+        mat-list-item
+        routerLink="/quan-tri-vien/danh-sach-giao-vien"
+        routerLinkActive="active-link"
+      >
+        <span>Giáo viên</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/quan-tri-vien/danh-sach-nhan-vien"
+        routerLinkActive="active-link"
+      >
+        <span>Nhân viên</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/quan-tri-vien/danh-sach-hoc-vien"
+        routerLinkActive="active-link"
+      >
+        <span>Học viên</span>
+      </a>
+    </mat-nav-list>
+
   </div>
 </mat-list>
 
