@@ -146,19 +146,20 @@ export class DangKyKyThiComponent implements OnInit {
       data: { kyThi },
     });
   }
-  xoaKyThi(maKyThi: any) {
+  xoaDangKyThi(maKyThi: any) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '45%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      const user = this.storageService.getUser();
       if (result === 'ok') {
-        this.kyThiService.xoaKyThi(maKyThi).subscribe({
+        this.dangKyThiService.xoaDangKyThi(maKyThi, user.tenTaiKhoan).subscribe({
           next: (data) => {
             if (data.message && data.message === 'cant-delete') {
-              this.toastr.warning('Không thể xóa!');
+              this.toastr.warning('Không thể hủy!');
             } else {
-              this.toastr.success('Xóa thành công!');
+              this.toastr.success('Hủy thành công!');
               this.loadDL();
             }
           },
@@ -169,6 +170,7 @@ export class DangKyKyThiComponent implements OnInit {
       }
     });
   }
+
   dangKy(item: any) {
     const body = {
       tenTaiKhoan: this.loggedInUsername,

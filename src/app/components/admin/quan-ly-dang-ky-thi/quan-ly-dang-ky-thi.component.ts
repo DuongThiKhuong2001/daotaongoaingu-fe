@@ -9,6 +9,8 @@ import { DangKyKhoaHocService } from 'src/app/services/dang-ky-khoa-hoc.service'
 import { KhoaHoc } from 'src/app/models/KhoaHoc';
 import { KhoaHocService } from 'src/app/services/khoa-hoc.service';
 import { DangKyThiService } from '../../../services/dang-ky-thi.service';
+import { DeleteComponent } from '../../delete/delete.component';
+import { StorageService } from './../../../services/storage.service';
 
 @Component({
   selector: 'app-quan-ly-dang-ky-thi',
@@ -34,7 +36,8 @@ export class QuanLyDangKyThiComponent {
   constructor(
     private dangKyThiService: DangKyThiService,
     private toastr: ToastrService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
@@ -115,4 +118,29 @@ export class QuanLyDangKyThiComponent {
         },
       });
   }
+  xoaDangKyThi(item: any) {
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      width: '45%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+
+      if (result === 'ok') {
+        this.dangKyThiService.xoaDangKyThi(item.kyThi.maKyThi, item.hocVien.taiKhoan.tenDangNhap).subscribe({
+          next: (data) => {
+            if (data.message && data.message === 'cant-delete') {
+              this.toastr.warning('Không thể hủy!');
+            } else {
+              this.toastr.success('Hủy thành công!');
+              this.loadDanhSachDKKyThi();
+            }
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      }
+    });
+  }
+
 }

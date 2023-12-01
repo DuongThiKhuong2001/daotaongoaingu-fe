@@ -79,6 +79,14 @@
             DangKyKH.trangThaiDangKyHoc === "CHUA_DUYET" ? "Duyệt" : "Đã duyệt"
           }}
         </button>
+        <button
+        *ngIf="DangKyKH.trangThaiDangKyHoc === 'CHUA_DUYET'"
+        mat-raised-button
+        color="warn"
+        (click)="xoaDangKyHoc(DangKyKH)"
+      >
+        Hủy
+      </button>
       </mat-cell>
     </ng-container>
 

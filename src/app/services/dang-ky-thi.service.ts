@@ -46,8 +46,8 @@ export class DangKyThiService {
     return this.http.put<any>(`${this.apiUrl}/cap-nhat-lich-thi/${maDangKyThi}`, dangKyThiRequest);
   }
   // Xóa đăng ký thi
-  xoaDangKyThi(maDangKyThi: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/huy/${maDangKyThi}`);
+  xoaDangKyThi(maDangKyThi: number, ten: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/huy/${maDangKyThi}/${ten}`);
   }
   kiemTraDangKyThi(body:any): Observable<any> {
     return this.http.post(`${this.apiUrl}/kiem-tra`, body);

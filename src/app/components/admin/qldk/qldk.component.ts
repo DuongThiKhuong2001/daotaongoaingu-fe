@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { DeleteQldkComponent } from './delete-qldk/delete-qldk.component';
 import { ListHVHPComponent } from './list-hvhp/list-hvhp.component';
+import { DeleteComponent } from '../../delete/delete.component';
 
 @Component({
   selector: 'app-qldk',
@@ -179,6 +180,30 @@ export class QldkComponent {
 
     dialogRef.afterClosed().subscribe((item) => {
       // Có thể thực hiện các thao tác sau khi dialog được đóng
+    });
+  }
+  xoaDangKyHoc(item: any) {
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      width: '45%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+
+      if (result === 'ok') {
+        this.dangKyKhoaHocService.xoaDangKyKhoaHoc(item.maDangKy).subscribe({
+          next: (data) => {
+            if (data.message && data.message === 'cant-delete') {
+              this.toastr.warning('Không thể hủy!');
+            } else {
+              this.toastr.success('Hủy thành công!');
+              this.loadDanhSachDKKhoaHoc();
+            }
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      }
     });
   }
 }

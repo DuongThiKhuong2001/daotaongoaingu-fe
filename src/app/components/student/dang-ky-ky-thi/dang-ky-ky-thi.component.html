@@ -82,7 +82,14 @@
           }}
         </button>
 
-
+        <button
+        *ngIf="registrationStatus[item.maKyThi] === 'chuaduyet'"
+        mat-raised-button
+        color="warn"
+        (click)="xoaDangKyThi(item.maKyThi)"
+      >
+        Hủy
+      </button>
 
       </mat-cell>
     </ng-container>
