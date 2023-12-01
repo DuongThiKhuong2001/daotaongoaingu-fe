@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -19,7 +19,7 @@ import { DangKyKH } from 'src/app/models/DangKyKH';
   styleUrls: ['./register-course.component.css'],
 })
 //chỉ hiển thị các khóa học chưa diễn ra
-export class RegisterCourseComponent {
+export class RegisterCourseComponent implements OnInit {
   isRegistered: boolean = false;
   danhSachKhoaHoc: MatTableDataSource<KhoaHoc> = new MatTableDataSource();
   displayedColumns: string[] = [

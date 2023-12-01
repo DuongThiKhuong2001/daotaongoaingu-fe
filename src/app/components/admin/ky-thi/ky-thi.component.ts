@@ -82,6 +82,7 @@ export class KyThiComponent {
       this.kyThiService
         .getKhoaHocByChungChi(this.selectedChungChi)
         .subscribe((data) => {
+          console.log(data);
           this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
           this.danhSachKyThi.paginator = this.paginator;
           this.danhSachKyThi.sort = this.sort;
@@ -99,6 +100,7 @@ export class KyThiComponent {
     else {
       // Trường hợp 1: Lấy tất cả
       this.kyThiService.layTatCaKyThi().subscribe((data) => {
+        console.log(data);
         this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
         this.danhSachKyThi.paginator = this.paginator;
         this.danhSachKyThi.sort = this.sort;

@@ -55,10 +55,13 @@ export class DangKyKyThiComponent implements OnInit {
     const user = this.storageService.getUser();
     this.loggedInUsername = user.tenTaiKhoan;
     this.loadDL();
-
     // Gọi API để lấy danh sách chứng chỉ
     this.chungChiService.layTatCaChungChi().subscribe((data) => {
       this.chungChis = data;
+      if (this.chungChis.length > 0) {
+        this.selectedChungChi = this.chungChis[0].maChungChi;
+        this.loadDL()
+      }
     });
 
     // Gọi API để lấy danh sách các năm
@@ -101,31 +104,17 @@ export class DangKyKyThiComponent implements OnInit {
     // Kiểm tra xem có tham số lọc nào được chọn hay không
     if (this.selectedChungChi !== null) {
       // Trường hợp 3: Lấy theo chứng chỉ
-      this.kyThiService
-        .getKyThiConHanTheoChungChi(this.selectedChungChi)
-        .subscribe((data) => {
+      this.kyThiService.getKhoaHocByChungChi(this.selectedChungChi).subscribe({
+        next: (data) => {
+          console.log(data);
           this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
           this.danhSachKyThi.paginator = this.paginator;
           this.danhSachKyThi.sort = this.sort;
           this.kiemTra(data);
-        });
-    } else if (this.selectedNam !== null && this.selectedThang !== null) {
-      // Trường hợp 2: Lấy theo tháng và năm
-      this.kyThiService
-        .getKyThiConHanTheoThangNam(this.selectedThang, this.selectedNam)
-        .subscribe((data) => {
-          this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
-          this.danhSachKyThi.paginator = this.paginator;
-          this.danhSachKyThi.sort = this.sort;
-          this.kiemTra(data);
-        });
-    } else {
-      // Trường hợp 1: Lấy tất cả
-      this.kyThiService.getKyThiConHan().subscribe((data) => {
-        this.danhSachKyThi = new MatTableDataSource<KyThi>(data);
-        this.danhSachKyThi.paginator = this.paginator;
-        this.danhSachKyThi.sort = this.sort;
-        this.kiemTra(data);
+        },
+        error: (err) => {
+          console.log(err);
+        },
       });
     }
   }
@@ -187,12 +176,15 @@ export class DangKyKyThiComponent implements OnInit {
     };
     this.dangKyThiService.themDangKyThi(body).subscribe({
       next: (data) => {
+        console.log(data);
         if (data.message && data.message === 'exist') {
           this.toastr.warning('Bạn đã đăng ký kỳ thi này rồi!');
         } else if (data.message && data.message === 'chuatoihan') {
           this.toastr.warning(
             'Chưa tới ngày đăng ký thi.Hạn đăng ký là trong vòng 2 tháng trước ngày thi đầu tiên!'
           );
+        } else if (data.message && data.message === 'quahan') {
+          this.toastr.warning('Quá hạn đăng ký!');
         } else if (data.message && data.message === 'lichthinull') {
           this.toastr.warning('Chưa có lịch thi cho kỳ thi này!');
         } else {
