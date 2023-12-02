@@ -71,18 +71,22 @@
             DangKyKH.trangThaiDangKyThi === "Chua_Duyet" ? "Duyệt" : "Đã duyệt"
           }}
         </button>
-
-        <button
-        *ngIf="DangKyKH.trangThaiDangKyThi === 'Chua_Duyet'"
-        mat-raised-button
-        color="warn"
-        (click)="xoaDangKyThi(DangKyKH)"
-      >
-        Hủy
-      </button>
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="huy">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let DangKyKH"
+        ><button
+          *ngIf="DangKyKH.trangThaiDangKyThi === 'Chua_Duyet'"
+          mat-raised-button
+          color="warn"
+          (click)="xoaDangKyThi(DangKyKH)"
+        >
+          Hủy
+        </button>
+      </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>

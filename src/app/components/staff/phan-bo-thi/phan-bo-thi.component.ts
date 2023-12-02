@@ -30,8 +30,8 @@ export class PhanBoThiComponent implements OnInit {
     'kyThi',
     'trangThai',
     'ngayDangKy',
-    'detail',
     'action',
+    'detail',
   ];
   searchTerm: string = '';
   currentDateTime: Date = new Date();

@@ -10,6 +10,7 @@
     <mat-icon (click)="onSearch()" matSuffix color="search">search</mat-icon>
     <mat-icon (click)="refresh()" matSuffix color="search">refresh</mat-icon>
   </mat-form-field> -->
+
 <div class="filter">
  <mat-form-field appearance="outline" class="search">
     <mat-label>Chọn chứng chỉ</mat-label>
@@ -19,6 +20,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field></div>
+    <p><i>- Thời gian đăng ký thi là khoảng thời gian từ Ngày Bắt đầu trước ngày thi đầu tiên 2 tháng cho đến Ngày Kết thúc trước ngày thi 1 tháng. </i></p>
   <mat-table [dataSource]="danhSachKyThi" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="stt">
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
@@ -77,22 +79,26 @@
               : registrationStatus[item.maKyThi] === "dalendiem"
               ? "Đã lên điểm"
               : "Đăng ký"
-
-
           }}
         </button>
 
-        <button
-        *ngIf="registrationStatus[item.maKyThi] === 'chuaduyet'"
-        mat-raised-button
-        color="warn"
-        (click)="xoaDangKyThi(item.maKyThi)"
-      >
-        Hủy
-      </button>
-
       </mat-cell>
     </ng-container>
+
+<ng-container matColumnDef="huy">
+  <mat-header-cell *matHeaderCellDef></mat-header-cell>
+  <mat-cell *matCellDef="let item">
+    <button
+      *ngIf="registrationStatus[item.maKyThi] === 'chuaduyet'"
+      mat-raised-button
+      color="warn"
+      (click)="xoaDangKyThi(item.maKyThi)"
+    >
+      Hủy
+    </button>
+  </mat-cell>
+</ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row
       matRipple

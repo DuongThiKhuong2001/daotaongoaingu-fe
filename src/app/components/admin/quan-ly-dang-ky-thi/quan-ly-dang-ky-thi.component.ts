@@ -11,6 +11,7 @@ import { KhoaHocService } from 'src/app/services/khoa-hoc.service';
 import { DangKyThiService } from '../../../services/dang-ky-thi.service';
 import { DeleteComponent } from '../../delete/delete.component';
 import { StorageService } from './../../../services/storage.service';
+import { HuyComponent } from '../../huy/huy.component';
 
 @Component({
   selector: 'app-quan-ly-dang-ky-thi',
@@ -26,6 +27,7 @@ export class QuanLyDangKyThiComponent {
     'tenHocVien',
     'ngayDangKy',
     'action',
+    'huy'
   ];
   searchTerm: string = '';
   currentDateTime: Date = new Date();
@@ -119,8 +121,8 @@ export class QuanLyDangKyThiComponent {
       });
   }
   xoaDangKyThi(item: any) {
-    const dialogRef = this.dialog.open(DeleteComponent, {
-      width: '45%',
+    const dialogRef = this.dialog.open(HuyComponent, {
+      width: '40%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

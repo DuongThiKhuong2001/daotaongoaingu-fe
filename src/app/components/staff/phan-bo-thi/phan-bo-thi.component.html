@@ -16,7 +16,7 @@
       <mat-header-cell *matHeaderCellDef>STT</mat-header-cell>
       <mat-cell *matCellDef="let i = index">{{ i + 1 }}</mat-cell>
     </ng-container>
-     <ng-container matColumnDef="hocVien.taiKhoan.tenDangNhap">
+    <ng-container matColumnDef="hocVien.taiKhoan.tenDangNhap">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Mã học viên</mat-header-cell
       >
@@ -29,9 +29,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Kỳ thi</mat-header-cell
       >
-      <mat-cell *matCellDef="let item">{{
-        item.kyThi.chungChi.tenChungChi
-      }} tháng {{item.kyThi.thangThi}} năm {{item.kyThi.namThi}} </mat-cell>
+      <mat-cell *matCellDef="let item"
+        >{{ item.kyThi.chungChi.tenChungChi }} tháng
+        {{ item.kyThi.thangThi }} năm {{ item.kyThi.namThi }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tenHocVien">
@@ -42,7 +43,7 @@
         item.hocVien.taiKhoan.hoTen
       }}</mat-cell>
     </ng-container>
-     <ng-container matColumnDef="trangThai">
+    <ng-container matColumnDef="trangThai">
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Trạng thái</mat-header-cell
       >
@@ -58,27 +59,41 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header
         >Ngày đăng ký</mat-header-cell
       >
-      <mat-cell *matCellDef="let DangKyKH">{{
-        DangKyKH.ngayDangKy | date : "dd/MM/yyyy"
-      }} </mat-cell>
+      <mat-cell *matCellDef="let DangKyKH"
+        >{{ DangKyKH.ngayDangKy | date : "dd/MM/yyyy" }}
+      </mat-cell>
     </ng-container>
     <ng-container matColumnDef="detail">
-      <mat-header-cell *matHeaderCellDef
-        ></mat-header-cell
-      >
-      <mat-cell *matCellDef="let DangKyThi"><mat-icon matTooltip="Chi tiết" (click)="chiTietLich(DangKyThi)">info</mat-icon> </mat-cell>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let DangKyThi"
+        ><mat-icon matTooltip="Chi tiết" (click)="chiTietLich(DangKyThi)"
+          >info</mat-icon
+        >
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let DangKyThi">
+        <button
+          mat-stroked-button
+          color="primary"
+          matTooltip="Chọn lịch"
+          *ngIf="DangKyThi.trangThaiDangKyThi === 'Da_Duyet'"
+          (click)="chonLich(DangKyThi, 0)" class="wide-button"
+        >
+          Chọn lịch
+        </button>
 
-        <button mat-stroked-button color="primary" matTooltip="Chọn lịch"  *ngIf="DangKyThi.trangThaiDangKyThi === 'Da_Duyet'"
-       color="primary" (click)="chonLich(DangKyThi, 0)">Chọn lịch</button>
-        <button mat-stroked-button color="primary" matTooltip="Đổi lịch" *ngIf="DangKyThi.trangThaiDangKyThi ==='Da_Sap_Lich'"
-        color="primary" (click)="chonLich(DangKyThi,1)">Đổi lịch</button>
-
-
+        <button
+          mat-stroked-button
+          color="primary"
+          matTooltip="Đổi lịch"
+          *ngIf="DangKyThi.trangThaiDangKyThi === 'Da_Sap_Lich'"
+          (click)="chonLich(DangKyThi, 1)"
+        >
+          Đổi lịch
+        </button>
       </mat-cell>
     </ng-container>
 
@@ -91,5 +106,4 @@
     showFirstLastButtons
   >
   </mat-paginator>
-
 </div>

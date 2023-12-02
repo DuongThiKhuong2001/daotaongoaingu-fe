@@ -1,0 +1,9 @@
+
+<h1 mat-dialog-title class="red-heading">Hủy</h1>
+<div mat-dialog-content>
+  Bạn chắc chắn muốn Hủy?
+</div>
+<div mat-dialog-actions>
+  <button (click)="closedialog()" mat-button mat-dialog-close>Không</button>
+  <button (click)="accept()" mat-button mat-dialog-close cdkFocusInitial color="warn">Đồng ý</button>
+</div>

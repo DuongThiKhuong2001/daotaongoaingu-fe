@@ -15,6 +15,7 @@ import { DetailKyThiComponent } from '../../admin/ky-thi/detail-ky-thi/detail-ky
 import { StorageService } from 'src/app/services/storage.service';
 import { DangKyKhoaHocService } from './../../../services/dang-ky-khoa-hoc.service';
 import { DangKyThiService } from './../../../services/dang-ky-thi.service';
+import { HuyComponent } from '../../huy/huy.component';
 //chỉ hiển thị các kỳ thi còn hạn
 @Component({
   selector: 'app-dang-ky-ky-thi',
@@ -29,6 +30,7 @@ export class DangKyKyThiComponent implements OnInit {
     'namThi',
     'Chitiet',
     'actions',
+    'huy'
   ];
   searchTerm: string = '';
   chungChis: ChungChi[] = [];
@@ -147,8 +149,8 @@ export class DangKyKyThiComponent implements OnInit {
     });
   }
   xoaDangKyThi(maKyThi: any) {
-    const dialogRef = this.dialog.open(DeleteComponent, {
-      width: '45%',
+    const dialogRef = this.dialog.open(HuyComponent, {
+      width: '40%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

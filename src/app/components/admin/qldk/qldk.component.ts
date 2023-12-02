@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DeleteQldkComponent } from './delete-qldk/delete-qldk.component';
 import { ListHVHPComponent } from './list-hvhp/list-hvhp.component';
 import { DeleteComponent } from '../../delete/delete.component';
+import { HuyComponent } from '../../huy/huy.component';
 
 @Component({
   selector: 'app-qldk',
@@ -25,6 +26,7 @@ export class QldkComponent {
     'ngayDangKy',
     'trangThaiDangKyHoc',
     'action',
+    'huy'
   ];
   length: number = 0;
   searchTerm: string = '';
@@ -183,8 +185,8 @@ export class QldkComponent {
     });
   }
   xoaDangKyHoc(item: any) {
-    const dialogRef = this.dialog.open(DeleteComponent, {
-      width: '45%',
+    const dialogRef = this.dialog.open(HuyComponent, {
+      width: '40%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

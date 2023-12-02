@@ -8,7 +8,10 @@
   margin: 16px;
 
 }
-
+.wide-button {
+  min-width: 110px;
+  /* Đặt chiều rộng tối thiểu bạn muốn */
+}
 /* Định dạng ô tìm kiếm */
 /* Định dạng ô tìm kiếm */
 .mat-form-field.search {
