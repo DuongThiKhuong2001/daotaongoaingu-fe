@@ -149,7 +149,7 @@ export class EditHosoComponent implements OnInit {
           this.cdr.detectChanges();
         },
         error: (err) => {
-          this.toastr.error(err);
+          this.toastr.error('Lỗi khi thực hiện!');
           console.log(err);
           this.cdr.detectChanges();
         },

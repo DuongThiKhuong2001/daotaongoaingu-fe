@@ -71,11 +71,11 @@ export class LoginComponent implements OnInit {
         if (data.message === 'account-warning') {
           this.errorMessage = 'Sai thông tin tài khoản hoặc mật khẩu!';
           this.isLoginFailed = true;
-          this.router.navigate(['/dang-nhap']);
+          this.router.navigate(['trang-chu/dang-nhap']);
         } else if (data.message === 'account-block') {
           this.errorMessage = 'Tài khoản bị khóa!!!';
           this.isLoginFailed = true;
-          this.router.navigate(['/dang-nhap']);
+          this.router.navigate(['trang-chu/dang-nhap']);
         } else {
           this.storageService.saveUser(data);
           this.isLoginFailed = false;
