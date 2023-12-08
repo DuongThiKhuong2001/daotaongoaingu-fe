@@ -43,11 +43,11 @@ export class DiemDanhComponent implements OnInit {
 
     const maxFileSize = 5 * 1024 * 1024; // 5 MB in bytes
     const allowedMimeTypes = [
-      'application/pdf',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      'image/jpeg',
-      'image/jpg',
-      'image/png',
+      // 'application/pdf',
+      // 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      // 'image/jpeg',
+      // 'image/jpg',
+      // 'image/png',
       'application/vnd.ms-excel', // MIME type cho file Excel .xls
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' // MIME type cho file Excel .xlsx
     ];
@@ -61,7 +61,7 @@ export class DiemDanhComponent implements OnInit {
     if (allowedMimeTypes.includes(file.type)) {
       this.selectedFile = file;
     } else {
-      this.toastr.warning('Loại tệp không hợp lệ. Vui lòng chọn tệp PDF, DOCX, JPEG, JPG, PNG hoặc Excel.');
+      this.toastr.warning('Loại tệp không hợp lệ. Vui lòng chọn tệp  Excel!');
       this.selectedFile = null;
     }
   }
